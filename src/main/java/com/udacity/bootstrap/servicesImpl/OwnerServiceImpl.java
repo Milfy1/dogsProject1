@@ -2,11 +2,12 @@ package com.udacity.bootstrap.servicesImpl;
 
 import com.udacity.bootstrap.DTO.OwnerDTO;
 import com.udacity.bootstrap.converter.ConverterDTO;
+import com.udacity.bootstrap.deserializers.DeSerializer;
 import com.udacity.bootstrap.entity.Dog;
 import com.udacity.bootstrap.entity.Owner;
-import com.udacity.bootstrap.exceptions.DogNotFoundException;
 import com.udacity.bootstrap.exceptions.OwnerNotFoundException;
 import com.udacity.bootstrap.repo.OwnerRepo;
+import com.udacity.bootstrap.serializers.Serializer;
 import com.udacity.bootstrap.services.OwnerService;
 import org.springframework.stereotype.Service;
 
@@ -21,10 +22,15 @@ public class OwnerServiceImpl implements OwnerService {
 
     private final ConverterDTO converterDTO;
 
+    private final Serializer<Dog> serializer;
+    private final DeSerializer<Dog> deserializer;
 
-    public OwnerServiceImpl(OwnerRepo ownerRepo, ConverterDTO converterDTO) {
+
+    public OwnerServiceImpl(OwnerRepo ownerRepo, ConverterDTO converterDTO, Serializer<Dog> serializer, DeSerializer<Dog> deserializer) {
         this.ownerRepo = ownerRepo;
         this.converterDTO = converterDTO;
+        this.serializer = serializer;
+        this.deserializer = deserializer;
     }
 
     public OwnerDTO createOwner(OwnerDTO ownerDTO) {

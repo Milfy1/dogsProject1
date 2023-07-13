@@ -2,11 +2,11 @@ package com.udacity.bootstrap.servicesImpl;
 
 import com.udacity.bootstrap.DTO.AirTagDTO;
 import com.udacity.bootstrap.converter.ConverterDTO;
+import com.udacity.bootstrap.deserializers.DeSerializer;
 import com.udacity.bootstrap.entity.AirTag;
-import com.udacity.bootstrap.entity.AirTag;
-import com.udacity.bootstrap.exceptions.AirTagNotFoundException;
 import com.udacity.bootstrap.exceptions.AirTagNotFoundException;
 import com.udacity.bootstrap.repo.AirTagRepo;
+import com.udacity.bootstrap.serializers.Serializer;
 import com.udacity.bootstrap.services.AirTagService;
 import org.springframework.stereotype.Service;
 
@@ -18,11 +18,18 @@ public class AirTagImpl implements AirTagService {
 
 
     private final ConverterDTO converterDTO;
+    private final Serializer<AirTag> serializer;
+
+    private final DeSerializer<AirTag> deSerializer;
+
+
 
     private final AirTagRepo airTagRepo;
 
-    public AirTagImpl(ConverterDTO converterDTO, AirTagRepo airTagRepo) {
+    public AirTagImpl(ConverterDTO converterDTO, Serializer<AirTag> serializer, DeSerializer<AirTag> deSerializer, AirTagRepo airTagRepo) {
         this.converterDTO = converterDTO;
+        this.serializer = serializer;
+        this.deSerializer = deSerializer;
         this.airTagRepo = airTagRepo;
     }
 

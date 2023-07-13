@@ -27,8 +27,8 @@ spring:
       value-serializer:  org.apache.kafka.common.serialization.ByteArraySerializer
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
     consumer:
-      value-serializer: org.apache.kafka.common.serialization.ByteArrayDeserializer
-      key-serializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.ByteArrayDeserializer
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
 
 springdoc:
   swagger-ui:
