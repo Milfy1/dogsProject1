@@ -1,6 +1,8 @@
 package com.udacity.bootstrap.servicesImpl;
 
 import com.udacity.bootstrap.DTO.OwnerDTO;
+import com.udacity.bootstrap.KafkaConsumer.KafkaConsumer;
+import com.udacity.bootstrap.KafkaProducer.KafkaProducer;
 import com.udacity.bootstrap.converter.ConverterDTO;
 import com.udacity.bootstrap.deserializers.DeSerializer;
 import com.udacity.bootstrap.entity.Dog;
@@ -21,21 +23,22 @@ public class OwnerServiceImpl implements OwnerService {
     private final OwnerRepo ownerRepo;
 
     private final ConverterDTO converterDTO;
+    private final KafkaProducer<Owner> kafkaProducer;
+    private final KafkaConsumer<Owner> kafkaConsumer;
 
-    private final Serializer<Dog> serializer;
-    private final DeSerializer<Dog> deserializer;
 
-
-    public OwnerServiceImpl(OwnerRepo ownerRepo, ConverterDTO converterDTO, Serializer<Dog> serializer, DeSerializer<Dog> deserializer) {
+    public OwnerServiceImpl(OwnerRepo ownerRepo, ConverterDTO converterDTO, KafkaProducer<Owner> kafkaProducer, KafkaConsumer<Owner> kafkaConsumer) {
         this.ownerRepo = ownerRepo;
         this.converterDTO = converterDTO;
-        this.serializer = serializer;
-        this.deserializer = deserializer;
+        this.kafkaProducer = kafkaProducer;
+        this.kafkaConsumer = kafkaConsumer;
+        this.kafkaConsumer.setTClass(Owner.class);
     }
 
     public OwnerDTO createOwner(OwnerDTO ownerDTO) {
         Owner owner = converterDTO.convert(ownerDTO, Owner.class);
         ownerRepo.save(owner);
+        kafkaProducer.sendmessage("Owner",owner);
         return ownerDTO;
     }
     

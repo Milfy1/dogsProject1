@@ -20,9 +20,7 @@ public class AirTagImpl implements AirTagService {
 
 
     private final ConverterDTO converterDTO;
-    private final Serializer<AirTag> serializer;
 
-    private final DeSerializer<AirTag> deSerializer;
     private final KafkaProducer<AirTag> kafkaProducer;
     private final KafkaConsumer<AirTag> kafkaConsumer;
 
@@ -30,13 +28,11 @@ public class AirTagImpl implements AirTagService {
 
     private final AirTagRepo airTagRepo;
 
-    public AirTagImpl(ConverterDTO converterDTO, Serializer<AirTag> serializer, DeSerializer<AirTag> deSerializer, KafkaProducer<AirTag> kafkaProducer, KafkaConsumer<AirTag> kafkaConsumer, AirTagRepo airTagRepo) {
+    public AirTagImpl(ConverterDTO converterDTO, KafkaProducer<AirTag> kafkaProducer, KafkaConsumer<AirTag> kafkaConsumer, AirTagRepo airTagRepo) {
         this.converterDTO = converterDTO;
-        this.serializer = serializer;
-        this.deSerializer = deSerializer;
         this.kafkaProducer = kafkaProducer;
         this.kafkaConsumer = kafkaConsumer;
-        kafkaConsumer.setTClass(AirTag.class);
+       this.kafkaConsumer.setTClass(AirTag.class);
         this.airTagRepo = airTagRepo;
     }
 
@@ -44,8 +40,7 @@ public class AirTagImpl implements AirTagService {
     public AirTagDTO createAirTag(AirTagDTO airTagDTO) {
         AirTag airTag = converterDTO.convert(airTagDTO, AirTag.class);
         airTagRepo.save(airTag);
-        kafkaProducer.sendmessage("Dog", airTag);
-        kafkaConsumer.setTClass(AirTag.class);
+        kafkaProducer.sendmessage("AirTag", airTag);
         return airTagDTO;
     }
 
