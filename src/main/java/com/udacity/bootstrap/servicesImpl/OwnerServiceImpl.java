@@ -4,12 +4,9 @@ import com.udacity.bootstrap.DTO.OwnerDTO;
 import com.udacity.bootstrap.KafkaConsumer.KafkaConsumer;
 import com.udacity.bootstrap.KafkaProducer.KafkaProducer;
 import com.udacity.bootstrap.converter.ConverterDTO;
-import com.udacity.bootstrap.deserializers.DeSerializer;
-import com.udacity.bootstrap.entity.Dog;
 import com.udacity.bootstrap.entity.Owner;
 import com.udacity.bootstrap.exceptions.OwnerNotFoundException;
 import com.udacity.bootstrap.repo.OwnerRepo;
-import com.udacity.bootstrap.serializers.Serializer;
 import com.udacity.bootstrap.services.OwnerService;
 import org.springframework.stereotype.Service;
 
