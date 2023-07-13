@@ -22,7 +22,7 @@ public class KafkaConsumer<T> {
     }
 
 
-    @KafkaListener(topics = "Dog, Owner, AirTag", groupId = "your-group-id")
+    @KafkaListener(topics = {"Dog", "Owner", "AirTag"}, groupId = "your-group-id")
     public void receiveMessage(@Payload byte[] message, @Header(KafkaHeaders.RECEIVED_TOPIC) String topic) {
         // Process the received Avro message
         T data = deSerializer.deserialize(tClass,message);
