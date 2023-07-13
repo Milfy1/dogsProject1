@@ -1,13 +1,12 @@
 package com.udacity.bootstrap.servicesImpl;
 import com.udacity.bootstrap.DTO.DogDTO;
+import com.udacity.bootstrap.KafkaProducer.KafkaProducer;
 import com.udacity.bootstrap.converter.ConverterDTO;
-import com.udacity.bootstrap.deserializers.DeSerializer;
 import com.udacity.bootstrap.entity.Dog;
 import com.udacity.bootstrap.exceptions.DogNotFoundException;
 import com.udacity.bootstrap.repo.DogRepo;
 import com.udacity.bootstrap.serializers.Serializer;
 import com.udacity.bootstrap.services.DogService;
-import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
@@ -16,17 +15,14 @@ import java.util.Optional;
 public class DogServiceImpl implements DogService {
     private final DogRepo dogRepo;
     private final ConverterDTO converterDTO;
-    private final KafkaTemplate<String,Object> kafkaTemplate;
+    private final KafkaProducer<Dog> kafkaProducer;
     private final Serializer<Dog> serializer;
-    private final DeSerializer<Dog> deSerializer;
 
-
-    public DogServiceImpl(DogRepo dogRepo, ConverterDTO converter, KafkaTemplate<String, Object> kafkaTemplate, Serializer<Dog> serializer, DeSerializer<Dog> deSerializer) {
+    public DogServiceImpl(DogRepo dogRepo, ConverterDTO converter, KafkaProducer<Dog> kafkaProducer, Serializer<Dog> serializer) {
         this.dogRepo = dogRepo;
         this.converterDTO = converter;
-        this.kafkaTemplate = kafkaTemplate;
+        this.kafkaProducer = kafkaProducer;
         this.serializer = serializer;
-        this.deSerializer = deSerializer;
     }
 
     public List<String> retrieveDogBreed() {
@@ -36,7 +32,7 @@ public class DogServiceImpl implements DogService {
     public DogDTO createDog(DogDTO dogDTO) {
         Dog dog = converterDTO.convert(dogDTO, Dog.class);
         dogRepo.save(dog);
-        kafkaTemplate.send("Dog", "check", serializer.serialize(dog));
+        kafkaProducer.sendmessage("MS.confluent", dog, Dog.class);
         return dogDTO;
     }
 
@@ -58,7 +54,6 @@ public class DogServiceImpl implements DogService {
     public List<DogDTO> getDogs() {
         List<Dog> dogs = dogRepo.findAll();
         return converterDTO.toList(dogs, DogDTO.class);
-
     }
 
     public DogDTO updateDog(DogDTO dogDTO, Long id) {
