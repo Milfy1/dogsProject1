@@ -1,11 +1,11 @@
 package com.udacity.bootstrap.servicesImpl;
 import com.udacity.bootstrap.DTO.DogDTO;
+import com.udacity.bootstrap.KafkaConsumer.KafkaConsumer;
 import com.udacity.bootstrap.KafkaProducer.KafkaProducer;
 import com.udacity.bootstrap.converter.ConverterDTO;
 import com.udacity.bootstrap.entity.Dog;
 import com.udacity.bootstrap.exceptions.DogNotFoundException;
 import com.udacity.bootstrap.repo.DogRepo;
-import com.udacity.bootstrap.serializers.Serializer;
 import com.udacity.bootstrap.services.DogService;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -16,11 +16,13 @@ public class DogServiceImpl implements DogService {
     private final DogRepo dogRepo;
     private final ConverterDTO converterDTO;
     private final KafkaProducer<Dog> kafkaProducer;
-
-    public DogServiceImpl(DogRepo dogRepo, ConverterDTO converter, KafkaProducer<Dog> kafkaProducer) {
+    private final KafkaConsumer<Dog> kafkaConsumer;
+    public DogServiceImpl(DogRepo dogRepo, ConverterDTO converter, KafkaProducer<Dog> kafkaProducer, KafkaConsumer<Dog> kafkaConsumer) {
         this.dogRepo = dogRepo;
         this.converterDTO = converter;
         this.kafkaProducer = kafkaProducer;
+        this.kafkaConsumer = kafkaConsumer;
+        kafkaConsumer.setTClass(Dog.class);
     }
 
     public List<String> retrieveDogBreed() {
@@ -31,6 +33,7 @@ public class DogServiceImpl implements DogService {
         Dog dog = converterDTO.convert(dogDTO, Dog.class);
         dogRepo.save(dog);
         kafkaProducer.sendmessage("Dog", dog);
+        kafkaConsumer.setTClass(Dog.class);
         return dogDTO;
     }
 

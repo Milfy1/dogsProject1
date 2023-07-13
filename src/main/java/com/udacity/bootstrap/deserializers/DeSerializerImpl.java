@@ -16,6 +16,7 @@ public class DeSerializerImpl<T> implements DeSerializer<T> {
     public T deserialize(Class<T> tClass,byte[] var1) {
         ObjectMapper mapper = new ObjectMapper();
         T t = null;
+
         try {
             t = mapper.readValue(var1, tClass);
         } catch (Exception e) {

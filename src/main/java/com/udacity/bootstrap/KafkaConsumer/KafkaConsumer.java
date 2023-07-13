@@ -1,19 +1,21 @@
 package com.udacity.bootstrap.KafkaConsumer;
 
 import com.udacity.bootstrap.deserializers.DeSerializer;
-import com.udacity.bootstrap.entity.Dog;
+import lombok.Setter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 
 @Component
 public class KafkaConsumer<T> {
-    private final DeSerializer<T> deSerializer;
-    private final String topic;
-    private final Class<T> tClass;
-    public KafkaConsumer(DeSerializer<T> deSerializer, String topic, Class<T> tClass) {
+    private  final DeSerializer<T> deSerializer;
+    @Setter
+    private  String topic;
+    @Setter
+    private  Class<T> tClass;
+
+    public KafkaConsumer(DeSerializer<T> deSerializer) {
         this.deSerializer = deSerializer;
-        this.topic = topic;
-        this.tClass = tClass;
     }
 
 
