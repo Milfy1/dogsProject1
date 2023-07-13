@@ -6,6 +6,7 @@ import lombok.*;
 @Entity
 @Setter
 @Getter
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "dog")

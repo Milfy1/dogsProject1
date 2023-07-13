@@ -15,7 +15,7 @@ public class KafkaProducer<T> {
     }
 
 
-    public void sendmessage(String topicName,T data, Class<T> tClass) {
+    public void sendmessage(String topicName,T data) {
         kafkaTemplate.send(topicName,serializer.serialize(data));
     }
 }
