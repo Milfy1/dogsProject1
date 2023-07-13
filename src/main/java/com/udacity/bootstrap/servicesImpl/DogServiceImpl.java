@@ -22,7 +22,7 @@ public class DogServiceImpl implements DogService {
         this.converterDTO = converter;
         this.kafkaProducer = kafkaProducer;
         this.kafkaConsumer = kafkaConsumer;
-        kafkaConsumer.setTClass(Dog.class);
+        this.kafkaConsumer.setTClass(Dog.class);
     }
 
     public List<String> retrieveDogBreed() {
@@ -33,7 +33,6 @@ public class DogServiceImpl implements DogService {
         Dog dog = converterDTO.convert(dogDTO, Dog.class);
         dogRepo.save(dog);
         kafkaProducer.sendmessage("Dog", dog);
-        kafkaConsumer.setTClass(Dog.class);
         return dogDTO;
     }
 
