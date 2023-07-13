@@ -4,7 +4,9 @@ import com.udacity.bootstrap.converter.ConverterDTO;
 import com.udacity.bootstrap.entity.Dog;
 import com.udacity.bootstrap.exceptions.DogNotFoundException;
 import com.udacity.bootstrap.repo.DogRepo;
+import com.udacity.bootstrap.serializers.Serializer;
 import com.udacity.bootstrap.services.DogService;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
@@ -13,10 +15,14 @@ import java.util.Optional;
 public class DogServiceImpl implements DogService {
     private final DogRepo dogRepo;
     private final ConverterDTO converterDTO;
+    private final KafkaTemplate<String,Object> kafkaTemplate;
+    private final Serializer<Dog> serializer;
 
-    public DogServiceImpl(DogRepo dogRepo, ConverterDTO converter) {
+    public DogServiceImpl(DogRepo dogRepo, ConverterDTO converter, KafkaTemplate<String, Object> kafkaTemplate, Serializer<Dog> serializer) {
         this.dogRepo = dogRepo;
         this.converterDTO = converter;
+        this.kafkaTemplate = kafkaTemplate;
+        this.serializer = serializer;
     }
 
     public List<String> retrieveDogBreed() {
@@ -26,8 +32,8 @@ public class DogServiceImpl implements DogService {
     public DogDTO createDog(DogDTO dogDTO) {
         Dog dog = converterDTO.convert(dogDTO, Dog.class);
         dogRepo.save(dog);
+        kafkaTemplate.send("MS.confluent", "check", serializer.serialize(dog));
         return dogDTO;
-
     }
 
     public String retrieveDogBreedById(Long id) {

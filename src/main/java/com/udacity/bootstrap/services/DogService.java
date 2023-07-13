@@ -18,6 +18,8 @@ public interface DogService {
     public DogDTO updateDog(DogDTO dogDTO, Long id);
 
     public void deleteDog(Long id);
+
+
 }
 
 

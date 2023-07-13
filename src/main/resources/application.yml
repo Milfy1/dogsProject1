@@ -24,8 +24,11 @@ spring:
       sasl.jaas.config: org.apache.kafka.common.security.plain.PlainLoginModule   required username='IGFY3MJZOZJU43VK'   password='k/Dtg9O/U+UcXx9ua21ElGlNNJJEK7TTEqiKTsqfPXehn7wfWKcAhsyKMgVuyvJO';
       bootstrap.servers: pkc-75m1o.europe-west3.gcp.confluent.cloud:9092
     producer:
-      value-serializer:  org.apache.kafka.common.serialization.StringSerializer
+      value-serializer:  org.apache.kafka.common.serialization.ByteArraySerializer
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
+    consumer:
+      value-serializer: org.apache.kafka.common.serialization.ByteArrayDeserializer
+      key-serializer: org.apache.kafka.common.serialization.StringDeserializer
 
 springdoc:
   swagger-ui:

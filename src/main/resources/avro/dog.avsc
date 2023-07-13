@@ -1,0 +1,46 @@
+{
+  "namespace": "com.udacity.bootstrap",
+  "type": "record",
+  "name": "Dog",
+  "fields": [
+    {
+      "name": "id",
+      "type": "long"
+    },
+    {
+      "name": "name",
+      "type": "string"
+    } ,{
+      "name": "breed",
+      "type": "string"
+    } ,{
+      "name": "origin",
+      "type": "string",
+    }
+    , {
+      "name": "fk_owner_id",
+      "type": "long",
+    },
+    {
+      "name": "airTag",
+      "type": {
+        "type": "record",
+        "name": "AirTag",
+        "fields": [
+          {
+            "name": "id",
+            "type": "long",
+          },
+          {
+            "name": "brand",
+            "type": "string",
+          },{
+            "name": "color",
+            "type": "string",
+          }
+
+        ]
+      }
+    }
+  ]
+}

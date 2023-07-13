@@ -22,7 +22,7 @@ public class BootstrapApplication {
 
 	public static void main(String[] args) {
 		ApplicationContext ctx = SpringApplication.run(BootstrapApplication.class, args);
-		ctx.getBean(KafkaTemplate.class).send("MS.confluent", "not working");
+//		ctx.getBean(KafkaTemplate.class).send("MS.confluent", "not working");
 	}
 
 }
