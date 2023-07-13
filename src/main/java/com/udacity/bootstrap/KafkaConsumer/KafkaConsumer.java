@@ -1,4 +1,4 @@
-package com.udacity.bootstrap.servicesImpl;
+package com.udacity.bootstrap.KafkaConsumer;
 
 import com.udacity.bootstrap.deserializers.DeSerializer;
 import com.udacity.bootstrap.entity.Dog;
