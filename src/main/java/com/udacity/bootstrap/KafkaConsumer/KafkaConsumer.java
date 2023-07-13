@@ -6,18 +6,21 @@ import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 
 @Component
-public class KafkaConsumer {
-    private final DeSerializer<Dog> deSerializer;
-
-    public KafkaConsumer(DeSerializer<Dog> deSerializer) {
+public class KafkaConsumer<T> {
+    private final DeSerializer<T> deSerializer;
+    private final String topic;
+    private final Class<T> tClass;
+    public KafkaConsumer(DeSerializer<T> deSerializer, String topic, Class<T> tClass) {
         this.deSerializer = deSerializer;
+        this.topic = topic;
+        this.tClass = tClass;
     }
 
 
     @KafkaListener(topics = "Dog", groupId = "your-group-id")
     public void receiveMessage(byte[] message) {
         // Process the received Avro message
-        Dog dog = deSerializer.deserialize(Dog.class,message);
-        System.out.println("Received message: " + dog.getName());
+        T data = deSerializer.deserialize(tClass,message);
+        System.out.println("Received message: " + data.toString());
     }
 }

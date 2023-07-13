@@ -16,13 +16,11 @@ public class DogServiceImpl implements DogService {
     private final DogRepo dogRepo;
     private final ConverterDTO converterDTO;
     private final KafkaProducer<Dog> kafkaProducer;
-    private final Serializer<Dog> serializer;
 
-    public DogServiceImpl(DogRepo dogRepo, ConverterDTO converter, KafkaProducer<Dog> kafkaProducer, Serializer<Dog> serializer) {
+    public DogServiceImpl(DogRepo dogRepo, ConverterDTO converter, KafkaProducer<Dog> kafkaProducer) {
         this.dogRepo = dogRepo;
         this.converterDTO = converter;
         this.kafkaProducer = kafkaProducer;
-        this.serializer = serializer;
     }
 
     public List<String> retrieveDogBreed() {
@@ -32,7 +30,7 @@ public class DogServiceImpl implements DogService {
     public DogDTO createDog(DogDTO dogDTO) {
         Dog dog = converterDTO.convert(dogDTO, Dog.class);
         dogRepo.save(dog);
-        kafkaProducer.sendmessage("MS.confluent", dog, Dog.class);
+        kafkaProducer.sendmessage("Dog", dog);
         return dogDTO;
     }
 
@@ -67,7 +65,6 @@ public class DogServiceImpl implements DogService {
         }
 //
     }
-
 
     public void deleteDog(Long id) {
         Optional<Dog> optionalDog = dogRepo.findById(id);
