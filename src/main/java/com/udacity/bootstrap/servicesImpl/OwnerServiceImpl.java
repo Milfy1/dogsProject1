@@ -1,7 +1,7 @@
 package com.udacity.bootstrap.servicesImpl;
 
 import com.udacity.bootstrap.DTO.OwnerDTO;
-import com.udacity.bootstrap.KafkaConsumer.KafkaConsumer;
+import com.udacity.bootstrap.KafkaConsumer.OwnerKafkaConsumer;
 import com.udacity.bootstrap.KafkaProducer.KafkaProducer;
 import com.udacity.bootstrap.converter.ConverterDTO;
 import com.udacity.bootstrap.entity.Owner;
@@ -21,15 +21,14 @@ public class OwnerServiceImpl implements OwnerService {
 
     private final ConverterDTO converterDTO;
     private final KafkaProducer<Owner> kafkaProducer;
-    private final KafkaConsumer<Owner> kafkaConsumer;
+    private final OwnerKafkaConsumer kafkaConsumer;
 
 
-    public OwnerServiceImpl(OwnerRepo ownerRepo, ConverterDTO converterDTO, KafkaProducer<Owner> kafkaProducer, KafkaConsumer<Owner> kafkaConsumer) {
+    public OwnerServiceImpl(OwnerRepo ownerRepo, ConverterDTO converterDTO, KafkaProducer<Owner> kafkaProducer, OwnerKafkaConsumer kafkaConsumer) {
         this.ownerRepo = ownerRepo;
         this.converterDTO = converterDTO;
         this.kafkaProducer = kafkaProducer;
         this.kafkaConsumer = kafkaConsumer;
-        this.kafkaConsumer.setTClass(Owner.class);
     }
 
     public OwnerDTO createOwner(OwnerDTO ownerDTO) {

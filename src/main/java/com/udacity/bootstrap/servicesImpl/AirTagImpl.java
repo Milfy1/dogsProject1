@@ -1,7 +1,7 @@
 package com.udacity.bootstrap.servicesImpl;
 
 import com.udacity.bootstrap.DTO.AirTagDTO;
-import com.udacity.bootstrap.KafkaConsumer.KafkaConsumer;
+import com.udacity.bootstrap.KafkaConsumer.AirTagKafkaConsumer;
 import com.udacity.bootstrap.KafkaProducer.KafkaProducer;
 import com.udacity.bootstrap.converter.ConverterDTO;
 import com.udacity.bootstrap.entity.AirTag;
@@ -20,17 +20,16 @@ public class AirTagImpl implements AirTagService {
     private final ConverterDTO converterDTO;
 
     private final KafkaProducer<AirTag> kafkaProducer;
-    private final KafkaConsumer<AirTag> kafkaConsumer;
+    private final AirTagKafkaConsumer kafkaConsumer;
 
 
 
     private final AirTagRepo airTagRepo;
 
-    public AirTagImpl(ConverterDTO converterDTO, KafkaProducer<AirTag> kafkaProducer, KafkaConsumer<AirTag> kafkaConsumer, AirTagRepo airTagRepo) {
+    public AirTagImpl(ConverterDTO converterDTO, KafkaProducer<AirTag> kafkaProducer, AirTagKafkaConsumer kafkaConsumer, AirTagRepo airTagRepo) {
         this.converterDTO = converterDTO;
         this.kafkaProducer = kafkaProducer;
         this.kafkaConsumer = kafkaConsumer;
-       this.kafkaConsumer.setTClass(AirTag.class);
         this.airTagRepo = airTagRepo;
     }
 

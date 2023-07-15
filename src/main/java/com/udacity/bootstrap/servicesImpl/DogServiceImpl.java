@@ -1,6 +1,6 @@
 package com.udacity.bootstrap.servicesImpl;
 import com.udacity.bootstrap.DTO.DogDTO;
-import com.udacity.bootstrap.KafkaConsumer.KafkaConsumer;
+import com.udacity.bootstrap.KafkaConsumer.DogKafkaConsumer;
 import com.udacity.bootstrap.KafkaProducer.KafkaProducer;
 import com.udacity.bootstrap.converter.ConverterDTO;
 import com.udacity.bootstrap.entity.Dog;
@@ -16,13 +16,12 @@ public class DogServiceImpl implements DogService {
     private final DogRepo dogRepo;
     private final ConverterDTO converterDTO;
     private final KafkaProducer<Dog> kafkaProducer;
-    private final KafkaConsumer<Dog> kafkaConsumer;
-    public DogServiceImpl(DogRepo dogRepo, ConverterDTO converter, KafkaProducer<Dog> kafkaProducer, KafkaConsumer<Dog> kafkaConsumer) {
+    private final DogKafkaConsumer kafkaConsumer;
+    public DogServiceImpl(DogRepo dogRepo, ConverterDTO converter, KafkaProducer<Dog> kafkaProducer, DogKafkaConsumer kafkaConsumer) {
         this.dogRepo = dogRepo;
         this.converterDTO = converter;
         this.kafkaProducer = kafkaProducer;
         this.kafkaConsumer = kafkaConsumer;
-        this.kafkaConsumer.setTClass(Dog.class);
     }
 
     public List<String> retrieveDogBreed() {
