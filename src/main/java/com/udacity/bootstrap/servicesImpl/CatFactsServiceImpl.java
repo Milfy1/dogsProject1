@@ -18,6 +18,7 @@ public class CatFactsServiceImpl implements CatFactsService {
         String url = "https://catfact.ninja/fact";
         RestTemplate restTemplate = new RestTemplate();
         String result = restTemplate.getForObject(url, String.class);
+        result = result.split("\"")[3];
         kafkaProducer.sendmessage("Cat_Facts",result);
         return result;
     }
