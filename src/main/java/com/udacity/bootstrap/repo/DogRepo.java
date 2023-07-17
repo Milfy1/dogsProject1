@@ -10,7 +10,7 @@ import java.util.List;
 
 @Repository
 public interface DogRepo extends JpaRepository<Dog,Long> {
-
+    
     @Query(value = "SELECT DISTINCT breed FROM Dog", nativeQuery = true)
      List<String> findAllBreed();
 

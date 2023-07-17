@@ -21,14 +21,12 @@ public class OwnerServiceImpl implements OwnerService {
 
     private final ConverterDTO converterDTO;
     private final KafkaProducer<Owner> kafkaProducer;
-    private final OwnerKafkaConsumer kafkaConsumer;
 
 
-    public OwnerServiceImpl(OwnerRepo ownerRepo, ConverterDTO converterDTO, KafkaProducer<Owner> kafkaProducer, OwnerKafkaConsumer kafkaConsumer) {
+    public OwnerServiceImpl(OwnerRepo ownerRepo, ConverterDTO converterDTO, KafkaProducer<Owner> kafkaProducer) {
         this.ownerRepo = ownerRepo;
         this.converterDTO = converterDTO;
         this.kafkaProducer = kafkaProducer;
-        this.kafkaConsumer = kafkaConsumer;
     }
 
     public OwnerDTO createOwner(OwnerDTO ownerDTO) {

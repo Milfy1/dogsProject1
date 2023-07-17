@@ -21,6 +21,6 @@ public class DogKafkaConsumer {
     public void receiveMessage(@Payload byte[] message, @Header(KafkaHeaders.RECEIVED_TOPIC) String topic) {
         // Process the received Avro message
         Dog data = deSerializer.deserialize(Dog.class,message);
-        System.out.println("Received message: " +"topic: "+topic+ data.toString());
+        System.out.println("Received message: " +"topic: "+topic+ "/"+ data.toString());
     }
 }

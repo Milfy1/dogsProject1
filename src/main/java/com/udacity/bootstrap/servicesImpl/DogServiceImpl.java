@@ -18,12 +18,10 @@ public class DogServiceImpl implements DogService {
     private final DogRepo dogRepo;
     private final ConverterDTO converterDTO;
     private final KafkaProducer<Dog> kafkaProducer;
-    private final DogKafkaConsumer kafkaConsumer;
-    public DogServiceImpl(DogRepo dogRepo, ConverterDTO converter, KafkaProducer<Dog> kafkaProducer, DogKafkaConsumer kafkaConsumer) {
+    public DogServiceImpl(DogRepo dogRepo, ConverterDTO converter, KafkaProducer<Dog> kafkaProducer) {
         this.dogRepo = dogRepo;
         this.converterDTO = converter;
         this.kafkaProducer = kafkaProducer;
-        this.kafkaConsumer = kafkaConsumer;
     }
 
     public List<String> retrieveDogBreed() {
