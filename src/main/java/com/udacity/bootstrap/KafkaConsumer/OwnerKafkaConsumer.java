@@ -21,6 +21,6 @@ public class OwnerKafkaConsumer {
     public void receiveMessage(@Payload byte[] message, @Header(KafkaHeaders.RECEIVED_TOPIC) String topic) {
         // Process the received Avro message
         Owner data = deSerializer.deserialize(Owner.class,message);
-        System.out.println("Received message: " +"topic: "+topic+ data.toString());
+        System.out.println("Received message: " +"topic: "+topic+ "/"+ data.toString());
     }
 }

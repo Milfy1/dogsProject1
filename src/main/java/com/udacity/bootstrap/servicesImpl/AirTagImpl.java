@@ -20,16 +20,14 @@ public class AirTagImpl implements AirTagService {
     private final ConverterDTO converterDTO;
 
     private final KafkaProducer<AirTag> kafkaProducer;
-    private final AirTagKafkaConsumer kafkaConsumer;
 
 
 
     private final AirTagRepo airTagRepo;
 
-    public AirTagImpl(ConverterDTO converterDTO, KafkaProducer<AirTag> kafkaProducer, AirTagKafkaConsumer kafkaConsumer, AirTagRepo airTagRepo) {
+    public AirTagImpl(ConverterDTO converterDTO, KafkaProducer<AirTag> kafkaProducer, AirTagRepo airTagRepo) {
         this.converterDTO = converterDTO;
         this.kafkaProducer = kafkaProducer;
-        this.kafkaConsumer = kafkaConsumer;
         this.airTagRepo = airTagRepo;
     }
 
