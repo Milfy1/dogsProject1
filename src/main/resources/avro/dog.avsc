@@ -15,11 +15,11 @@
       "type": "string"
     } ,{
       "name": "origin",
-      "type": "string",
+      "type": "string"
     }
     , {
       "name": "fk_owner_id",
-      "type": "long",
+      "type": "long"
     },
     {
       "name": "airTag",
@@ -29,14 +29,14 @@
         "fields": [
           {
             "name": "id",
-            "type": "long",
+            "type": "long"
           },
           {
             "name": "brand",
-            "type": "string",
+            "type": "string"
           },{
             "name": "color",
-            "type": "string",
+            "type": "string"
           }
 
         ]

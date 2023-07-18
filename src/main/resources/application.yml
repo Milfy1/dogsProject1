@@ -1,12 +1,9 @@
-avro:
-  topic:
-    name: MS.confluent
 server:
   port: 8080
 spring:
   datasource:
-    password: password
-    url: jdbc:postgresql://localhost:5432/abdullah
+    password: postgres
+    url: jdbc:postgresql://localhost:5432/student
     username: postgres
   jpa:
     hibernate:
@@ -23,12 +20,16 @@ spring:
       sasl.mechanism: PLAIN
       sasl.jaas.config: org.apache.kafka.common.security.plain.PlainLoginModule   required username='IGFY3MJZOZJU43VK'   password='k/Dtg9O/U+UcXx9ua21ElGlNNJJEK7TTEqiKTsqfPXehn7wfWKcAhsyKMgVuyvJO';
       bootstrap.servers: pkc-75m1o.europe-west3.gcp.confluent.cloud:9092
+      schema.registry.url: https://psrc-v9krz.eu-central-1.aws.confluent.cloud
+      schema.registry.basic.auth.user.info: SRBQUVEEU6AMEOZ3:xHnrZpYPvcGnBMoZTlOWXFS7VzRsCfK6jZpYJ/ZRFNdQSULWz0WxOfnpR6bKLZIg
+      basic.auth.credentials.source: USER_INFO
     producer:
-      value-serializer:  org.apache.kafka.common.serialization.ByteArraySerializer
+      value-serializer:  io.confluent.kafka.serializers.KafkaAvroSerializer
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
     consumer:
       value-deserializer: org.apache.kafka.common.serialization.ByteArrayDeserializer
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+
 
 springdoc:
   swagger-ui:

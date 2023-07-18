@@ -1,0 +1,19 @@
+{
+  "namespace": "com.udacity.bootstrap",
+  "type": "record",
+  "name": "AirTag",
+  "fields": [
+    {
+      "name": "id",
+      "type": "long"
+    },
+    {
+      "name": "brand",
+      "type": "string"
+    },
+    {
+      "name": "color",
+      "type": "string"
+    }
+  ]
+}

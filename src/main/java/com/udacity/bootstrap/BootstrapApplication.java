@@ -13,6 +13,8 @@ import org.springframework.context.event.EventListener;
 import org.springframework.kafka.core.KafkaTemplate;
 
 import java.time.Duration;
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.stream.Stream;
 
 
@@ -22,9 +24,13 @@ public class BootstrapApplication {
 
 	public static void main(String[] args) {
 		ApplicationContext ctx = SpringApplication.run(BootstrapApplication.class, args);
+		KafkaTemplate<String,AirTag> kafkaTemplate = ctx.getBean(KafkaTemplate.class);
+		kafkaTemplate.send("Dog","new record",
+				AirTag.newBuilder().setBrand("gucci").
+						setColor("red")
+						.setId(1).build());
 //		ctx.getBean(KafkaTemplate.class).send("MS.confluent", "not working");
 	}
-
 }
 
 //@RequiredArgsConstructor
