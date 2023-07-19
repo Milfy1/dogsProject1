@@ -1,0 +1,11 @@
+{
+  "namespace": "com.udacity.bootstrap",
+  "name": "CatFact",
+  "type": "record",
+  "fields": [
+    {
+      "name": "fact",
+      "type": "string"
+    }
+  ]
+}

@@ -18,17 +18,26 @@ spring:
     properties:
       security.protocol: SASL_SSL
       sasl.mechanism: PLAIN
-      sasl.jaas.config: org.apache.kafka.common.security.plain.PlainLoginModule   required username='IGFY3MJZOZJU43VK'   password='k/Dtg9O/U+UcXx9ua21ElGlNNJJEK7TTEqiKTsqfPXehn7wfWKcAhsyKMgVuyvJO';
+
       bootstrap.servers: pkc-75m1o.europe-west3.gcp.confluent.cloud:9092
-      schema.registry.url: https://psrc-v9krz.eu-central-1.aws.confluent.cloud
-      schema.registry.basic.auth.user.info: SRBQUVEEU6AMEOZ3:xHnrZpYPvcGnBMoZTlOWXFS7VzRsCfK6jZpYJ/ZRFNdQSULWz0WxOfnpR6bKLZIg
+      sasl.jaas.config: org.apache.kafka.common.security.plain.PlainLoginModule required username='CD7L6GQTITR65IWV' password='5vk9l7n90nl3baFMxoWqFIzxn22mp9ttguFKsaYZbxT8FB9GbaBBWtExU2EAbZy8';
+
+      schema.registry.url: https://psrc-lgkvv.europe-west3.gcp.confluent.cloud
+      schema.registry.basic.auth.user.info: CPRW3W3TMH2ZSA7R:H3ZwXFUuyDU5Rfr415W6kBCZ04FL7TrpfmV4AABMOHSERs2UO8GenPKmgFtqY5sI
       basic.auth.credentials.source: USER_INFO
+
     producer:
       value-serializer:  io.confluent.kafka.serializers.KafkaAvroSerializer
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
     consumer:
-      value-deserializer: org.apache.kafka.common.serialization.ByteArrayDeserializer
+      value-deserializer:  io.confluent.kafka.serializers.KafkaAvroDeserializer
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      auto-offset-reset: earliest
+      properties:
+        specific:
+          avro:
+            reader: true
+
 
 
 springdoc:

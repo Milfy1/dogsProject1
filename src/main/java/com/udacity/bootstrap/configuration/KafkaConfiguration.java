@@ -1,5 +1,6 @@
 package com.udacity.bootstrap.configuration;
 
+import io.confluent.kafka.serializers.KafkaAvroDeserializerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,20 +14,10 @@ import static org.apache.kafka.clients.producer.ProducerConfig.*;
 
 @Configuration
 public class KafkaConfiguration {
-//
+
 //    @Bean
 //    public ProducerFactory<String,String> producerFactory(){
 //        return new DefaultKafkaProducerFactory<>(
-//                Map.of(BOOTSTRAP_SERVERS_CONFIG,"localhost:9092",
-//                        RETRIES_CONFIG,0,
-//                        BUFFER_MEMORY_CONFIG, 33554432,
-//                        KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class,
-//                        VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class
-//                        ));
-//    }
-//
-//    @Bean
-//    public KafkaTemplate<String,String> kafkaTemplate(){
-//        return new KafkaTemplate<>(producerFactory());
+//                Map.of(KafkaAvroDeserializerConfig.SPECIFIC_AVRO_READER_CONFIG, "true"));
 //    }
 }

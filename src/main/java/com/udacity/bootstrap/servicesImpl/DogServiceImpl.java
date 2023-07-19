@@ -1,14 +1,13 @@
 package com.udacity.bootstrap.servicesImpl;
+import com.udacity.bootstrap.AvroRecords.DogRecord;
 import com.udacity.bootstrap.DTO.DogDTO;
-import com.udacity.bootstrap.KafkaConsumer.DogKafkaConsumer;
 import com.udacity.bootstrap.KafkaProducer.KafkaProducer;
-import com.udacity.bootstrap.converter.ConverterDTO;
+import com.udacity.bootstrap.converter.Converter;
 import com.udacity.bootstrap.entity.Dog;
 import com.udacity.bootstrap.exceptions.DogNotFoundException;
 import com.udacity.bootstrap.repo.DogRepo;
 import com.udacity.bootstrap.services.DogService;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,11 +15,11 @@ import java.util.Optional;
 @Service
 public class DogServiceImpl implements DogService {
     private final DogRepo dogRepo;
-    private final ConverterDTO converterDTO;
-    private final KafkaProducer<Dog> kafkaProducer;
-    public DogServiceImpl(DogRepo dogRepo, ConverterDTO converter, KafkaProducer<Dog> kafkaProducer) {
+    private final Converter converter;
+    private final KafkaProducer<DogRecord> kafkaProducer;
+    public DogServiceImpl(DogRepo dogRepo, Converter converter, KafkaProducer<DogRecord> kafkaProducer) {
         this.dogRepo = dogRepo;
-        this.converterDTO = converter;
+        this.converter = converter;
         this.kafkaProducer = kafkaProducer;
     }
 
@@ -29,10 +28,10 @@ public class DogServiceImpl implements DogService {
     }
 
     public DogDTO createDog(DogDTO dogDTO) {
-        Dog dog = converterDTO.convert(dogDTO, Dog.class);
-
+        Dog dog = converter.convert(dogDTO, Dog.class);
         dogRepo.save(dog);
-        kafkaProducer.sendmessage("Dog", dog);
+        DogRecord d = converter.convert(dogDTO, DogRecord.class);
+        kafkaProducer.sendmessage("Dog", d);
         return dogDTO;
     }
 
@@ -53,15 +52,15 @@ public class DogServiceImpl implements DogService {
 
     public List<DogDTO> getDogs() {
         List<Dog> dogs = dogRepo.findAll();
-        return converterDTO.toList(dogs, DogDTO.class);
+        return converter.toList(dogs, DogDTO.class);
     }
 
     public DogDTO updateDog(DogDTO dogDTO, Long id) {
         if (dogRepo.findById(id).isPresent()){
-            Dog dog = converterDTO.convert(dogDTO,Dog.class);
+            Dog dog = converter.convert(dogDTO,Dog.class);
             dog.setId(id);
             dogRepo.save(dog);
-          return converterDTO.convert(dog, DogDTO.class);
+          return converter.convert(dog, DogDTO.class);
         } else {
             throw new DogNotFoundException(id.toString());
         }

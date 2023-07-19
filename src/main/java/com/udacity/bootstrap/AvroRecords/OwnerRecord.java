@@ -3,9 +3,8 @@
  *
  * DO NOT EDIT DIRECTLY
  */
-package com.udacity.bootstrap;
+package com.udacity.bootstrap.AvroRecords;
 
-import org.apache.avro.generic.GenericArray;
 import org.apache.avro.specific.SpecificData;
 import org.apache.avro.util.Utf8;
 import org.apache.avro.message.BinaryMessageEncoder;
@@ -13,7 +12,7 @@ import org.apache.avro.message.BinaryMessageDecoder;
 import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
-public class Owner extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
+public class OwnerRecord extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
   private static final long serialVersionUID = 8415496220242173273L;
 
 
@@ -22,17 +21,17 @@ public class Owner extends org.apache.avro.specific.SpecificRecordBase implement
 
   private static final SpecificData MODEL$ = new SpecificData();
 
-  private static final BinaryMessageEncoder<Owner> ENCODER =
+  private static final BinaryMessageEncoder<OwnerRecord> ENCODER =
       new BinaryMessageEncoder<>(MODEL$, SCHEMA$);
 
-  private static final BinaryMessageDecoder<Owner> DECODER =
+  private static final BinaryMessageDecoder<OwnerRecord> DECODER =
       new BinaryMessageDecoder<>(MODEL$, SCHEMA$);
 
   /**
    * Return the BinaryMessageEncoder instance used by this class.
    * @return the message encoder used by this class
    */
-  public static BinaryMessageEncoder<Owner> getEncoder() {
+  public static BinaryMessageEncoder<OwnerRecord> getEncoder() {
     return ENCODER;
   }
 
@@ -40,7 +39,7 @@ public class Owner extends org.apache.avro.specific.SpecificRecordBase implement
    * Return the BinaryMessageDecoder instance used by this class.
    * @return the message decoder used by this class
    */
-  public static BinaryMessageDecoder<Owner> getDecoder() {
+  public static BinaryMessageDecoder<OwnerRecord> getDecoder() {
     return DECODER;
   }
 
@@ -49,7 +48,7 @@ public class Owner extends org.apache.avro.specific.SpecificRecordBase implement
    * @param resolver a {@link SchemaStore} used to find schemas by fingerprint
    * @return a BinaryMessageDecoder instance for this class backed by the given SchemaStore
    */
-  public static BinaryMessageDecoder<Owner> createDecoder(SchemaStore resolver) {
+  public static BinaryMessageDecoder<OwnerRecord> createDecoder(SchemaStore resolver) {
     return new BinaryMessageDecoder<>(MODEL$, SCHEMA$, resolver);
   }
 
@@ -68,7 +67,7 @@ public class Owner extends org.apache.avro.specific.SpecificRecordBase implement
    * @return a Owner instance decoded from the given buffer
    * @throws java.io.IOException if the given bytes could not be deserialized into an instance of this class
    */
-  public static Owner fromByteBuffer(
+  public static OwnerRecord fromByteBuffer(
       java.nio.ByteBuffer b) throws java.io.IOException {
     return DECODER.decode(b);
   }
@@ -76,14 +75,14 @@ public class Owner extends org.apache.avro.specific.SpecificRecordBase implement
   private long id;
   private java.lang.CharSequence name;
   private int age;
-  private java.util.List<com.udacity.bootstrap.Dog> dogs;
+  private java.util.List<DogRecord> dogs;
 
   /**
    * Default constructor.  Note that this does not initialize fields
    * to their default values from the schema.  If that is desired then
    * one should use <code>newBuilder()</code>.
    */
-  public Owner() {}
+  public OwnerRecord() {}
 
   /**
    * All-args constructor.
@@ -92,7 +91,7 @@ public class Owner extends org.apache.avro.specific.SpecificRecordBase implement
    * @param age The new value for age
    * @param dogs The new value for dogs
    */
-  public Owner(java.lang.Long id, java.lang.CharSequence name, java.lang.Integer age, java.util.List<com.udacity.bootstrap.Dog> dogs) {
+  public OwnerRecord(java.lang.Long id, java.lang.CharSequence name, java.lang.Integer age, java.util.List<DogRecord> dogs) {
     this.id = id;
     this.name = name;
     this.age = age;
@@ -125,7 +124,7 @@ public class Owner extends org.apache.avro.specific.SpecificRecordBase implement
     case 0: id = (java.lang.Long)value$; break;
     case 1: name = (java.lang.CharSequence)value$; break;
     case 2: age = (java.lang.Integer)value$; break;
-    case 3: dogs = (java.util.List<com.udacity.bootstrap.Dog>)value$; break;
+    case 3: dogs = (java.util.List<DogRecord>)value$; break;
     default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
     }
   }
@@ -185,7 +184,7 @@ public class Owner extends org.apache.avro.specific.SpecificRecordBase implement
    * Gets the value of the 'dogs' field.
    * @return The value of the 'dogs' field.
    */
-  public java.util.List<com.udacity.bootstrap.Dog> getDogs() {
+  public java.util.List<DogRecord> getDogs() {
     return dogs;
   }
 
@@ -194,7 +193,7 @@ public class Owner extends org.apache.avro.specific.SpecificRecordBase implement
    * Sets the value of the 'dogs' field.
    * @param value the value to set.
    */
-  public void setDogs(java.util.List<com.udacity.bootstrap.Dog> value) {
+  public void setDogs(java.util.List<DogRecord> value) {
     this.dogs = value;
   }
 
@@ -202,8 +201,8 @@ public class Owner extends org.apache.avro.specific.SpecificRecordBase implement
    * Creates a new Owner RecordBuilder.
    * @return A new Owner RecordBuilder
    */
-  public static com.udacity.bootstrap.Owner.Builder newBuilder() {
-    return new com.udacity.bootstrap.Owner.Builder();
+  public static OwnerRecord.Builder newBuilder() {
+    return new OwnerRecord.Builder();
   }
 
   /**
@@ -211,11 +210,11 @@ public class Owner extends org.apache.avro.specific.SpecificRecordBase implement
    * @param other The existing builder to copy.
    * @return A new Owner RecordBuilder
    */
-  public static com.udacity.bootstrap.Owner.Builder newBuilder(com.udacity.bootstrap.Owner.Builder other) {
+  public static OwnerRecord.Builder newBuilder(OwnerRecord.Builder other) {
     if (other == null) {
-      return new com.udacity.bootstrap.Owner.Builder();
+      return new OwnerRecord.Builder();
     } else {
-      return new com.udacity.bootstrap.Owner.Builder(other);
+      return new OwnerRecord.Builder(other);
     }
   }
 
@@ -224,11 +223,11 @@ public class Owner extends org.apache.avro.specific.SpecificRecordBase implement
    * @param other The existing instance to copy.
    * @return A new Owner RecordBuilder
    */
-  public static com.udacity.bootstrap.Owner.Builder newBuilder(com.udacity.bootstrap.Owner other) {
+  public static OwnerRecord.Builder newBuilder(OwnerRecord other) {
     if (other == null) {
-      return new com.udacity.bootstrap.Owner.Builder();
+      return new OwnerRecord.Builder();
     } else {
-      return new com.udacity.bootstrap.Owner.Builder(other);
+      return new OwnerRecord.Builder(other);
     }
   }
 
@@ -236,13 +235,13 @@ public class Owner extends org.apache.avro.specific.SpecificRecordBase implement
    * RecordBuilder for Owner instances.
    */
   @org.apache.avro.specific.AvroGenerated
-  public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<Owner>
-    implements org.apache.avro.data.RecordBuilder<Owner> {
+  public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<OwnerRecord>
+    implements org.apache.avro.data.RecordBuilder<OwnerRecord> {
 
     private long id;
     private java.lang.CharSequence name;
     private int age;
-    private java.util.List<com.udacity.bootstrap.Dog> dogs;
+    private java.util.List<DogRecord> dogs;
 
     /** Creates a new Builder */
     private Builder() {
@@ -253,7 +252,7 @@ public class Owner extends org.apache.avro.specific.SpecificRecordBase implement
      * Creates a Builder by copying an existing Builder.
      * @param other The existing Builder to copy.
      */
-    private Builder(com.udacity.bootstrap.Owner.Builder other) {
+    private Builder(OwnerRecord.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.id)) {
         this.id = data().deepCopy(fields()[0].schema(), other.id);
@@ -277,7 +276,7 @@ public class Owner extends org.apache.avro.specific.SpecificRecordBase implement
      * Creates a Builder by copying an existing Owner instance
      * @param other The existing instance to copy.
      */
-    private Builder(com.udacity.bootstrap.Owner other) {
+    private Builder(OwnerRecord other) {
       super(SCHEMA$, MODEL$);
       if (isValidValue(fields()[0], other.id)) {
         this.id = data().deepCopy(fields()[0].schema(), other.id);
@@ -311,7 +310,7 @@ public class Owner extends org.apache.avro.specific.SpecificRecordBase implement
       * @param value The value of 'id'.
       * @return This builder.
       */
-    public com.udacity.bootstrap.Owner.Builder setId(long value) {
+    public OwnerRecord.Builder setId(long value) {
       validate(fields()[0], value);
       this.id = value;
       fieldSetFlags()[0] = true;
@@ -331,7 +330,7 @@ public class Owner extends org.apache.avro.specific.SpecificRecordBase implement
       * Clears the value of the 'id' field.
       * @return This builder.
       */
-    public com.udacity.bootstrap.Owner.Builder clearId() {
+    public OwnerRecord.Builder clearId() {
       fieldSetFlags()[0] = false;
       return this;
     }
@@ -350,7 +349,7 @@ public class Owner extends org.apache.avro.specific.SpecificRecordBase implement
       * @param value The value of 'name'.
       * @return This builder.
       */
-    public com.udacity.bootstrap.Owner.Builder setName(java.lang.CharSequence value) {
+    public OwnerRecord.Builder setName(java.lang.CharSequence value) {
       validate(fields()[1], value);
       this.name = value;
       fieldSetFlags()[1] = true;
@@ -370,7 +369,7 @@ public class Owner extends org.apache.avro.specific.SpecificRecordBase implement
       * Clears the value of the 'name' field.
       * @return This builder.
       */
-    public com.udacity.bootstrap.Owner.Builder clearName() {
+    public OwnerRecord.Builder clearName() {
       name = null;
       fieldSetFlags()[1] = false;
       return this;
@@ -390,7 +389,7 @@ public class Owner extends org.apache.avro.specific.SpecificRecordBase implement
       * @param value The value of 'age'.
       * @return This builder.
       */
-    public com.udacity.bootstrap.Owner.Builder setAge(int value) {
+    public OwnerRecord.Builder setAge(int value) {
       validate(fields()[2], value);
       this.age = value;
       fieldSetFlags()[2] = true;
@@ -410,7 +409,7 @@ public class Owner extends org.apache.avro.specific.SpecificRecordBase implement
       * Clears the value of the 'age' field.
       * @return This builder.
       */
-    public com.udacity.bootstrap.Owner.Builder clearAge() {
+    public OwnerRecord.Builder clearAge() {
       fieldSetFlags()[2] = false;
       return this;
     }
@@ -419,7 +418,7 @@ public class Owner extends org.apache.avro.specific.SpecificRecordBase implement
       * Gets the value of the 'dogs' field.
       * @return The value.
       */
-    public java.util.List<com.udacity.bootstrap.Dog> getDogs() {
+    public java.util.List<DogRecord> getDogs() {
       return dogs;
     }
 
@@ -429,7 +428,7 @@ public class Owner extends org.apache.avro.specific.SpecificRecordBase implement
       * @param value The value of 'dogs'.
       * @return This builder.
       */
-    public com.udacity.bootstrap.Owner.Builder setDogs(java.util.List<com.udacity.bootstrap.Dog> value) {
+    public OwnerRecord.Builder setDogs(java.util.List<DogRecord> value) {
       validate(fields()[3], value);
       this.dogs = value;
       fieldSetFlags()[3] = true;
@@ -449,7 +448,7 @@ public class Owner extends org.apache.avro.specific.SpecificRecordBase implement
       * Clears the value of the 'dogs' field.
       * @return This builder.
       */
-    public com.udacity.bootstrap.Owner.Builder clearDogs() {
+    public OwnerRecord.Builder clearDogs() {
       dogs = null;
       fieldSetFlags()[3] = false;
       return this;
@@ -457,13 +456,13 @@ public class Owner extends org.apache.avro.specific.SpecificRecordBase implement
 
     @Override
     @SuppressWarnings("unchecked")
-    public Owner build() {
+    public OwnerRecord build() {
       try {
-        Owner record = new Owner();
+        OwnerRecord record = new OwnerRecord();
         record.id = fieldSetFlags()[0] ? this.id : (java.lang.Long) defaultValue(fields()[0]);
         record.name = fieldSetFlags()[1] ? this.name : (java.lang.CharSequence) defaultValue(fields()[1]);
         record.age = fieldSetFlags()[2] ? this.age : (java.lang.Integer) defaultValue(fields()[2]);
-        record.dogs = fieldSetFlags()[3] ? this.dogs : (java.util.List<com.udacity.bootstrap.Dog>) defaultValue(fields()[3]);
+        record.dogs = fieldSetFlags()[3] ? this.dogs : (java.util.List<DogRecord>) defaultValue(fields()[3]);
         return record;
       } catch (org.apache.avro.AvroMissingFieldException e) {
         throw e;
@@ -474,8 +473,8 @@ public class Owner extends org.apache.avro.specific.SpecificRecordBase implement
   }
 
   @SuppressWarnings("unchecked")
-  private static final org.apache.avro.io.DatumWriter<Owner>
-    WRITER$ = (org.apache.avro.io.DatumWriter<Owner>)MODEL$.createDatumWriter(SCHEMA$);
+  private static final org.apache.avro.io.DatumWriter<OwnerRecord>
+    WRITER$ = (org.apache.avro.io.DatumWriter<OwnerRecord>)MODEL$.createDatumWriter(SCHEMA$);
 
   @Override public void writeExternal(java.io.ObjectOutput out)
     throws java.io.IOException {
@@ -483,8 +482,8 @@ public class Owner extends org.apache.avro.specific.SpecificRecordBase implement
   }
 
   @SuppressWarnings("unchecked")
-  private static final org.apache.avro.io.DatumReader<Owner>
-    READER$ = (org.apache.avro.io.DatumReader<Owner>)MODEL$.createDatumReader(SCHEMA$);
+  private static final org.apache.avro.io.DatumReader<OwnerRecord>
+    READER$ = (org.apache.avro.io.DatumReader<OwnerRecord>)MODEL$.createDatumReader(SCHEMA$);
 
   @Override public void readExternal(java.io.ObjectInput in)
     throws java.io.IOException {
@@ -506,7 +505,7 @@ public class Owner extends org.apache.avro.specific.SpecificRecordBase implement
     out.writeArrayStart();
     out.setItemCount(size0);
     long actualSize0 = 0;
-    for (com.udacity.bootstrap.Dog e0: this.dogs) {
+    for (DogRecord e0: this.dogs) {
       actualSize0++;
       out.startItem();
       e0.customEncode(out);
@@ -529,17 +528,17 @@ public class Owner extends org.apache.avro.specific.SpecificRecordBase implement
       this.age = in.readInt();
 
       long size0 = in.readArrayStart();
-      java.util.List<com.udacity.bootstrap.Dog> a0 = this.dogs;
+      java.util.List<DogRecord> a0 = this.dogs;
       if (a0 == null) {
-        a0 = new SpecificData.Array<com.udacity.bootstrap.Dog>((int)size0, SCHEMA$.getField("dogs").schema());
+        a0 = new SpecificData.Array<DogRecord>((int)size0, SCHEMA$.getField("dogs").schema());
         this.dogs = a0;
       } else a0.clear();
-      SpecificData.Array<com.udacity.bootstrap.Dog> ga0 = (a0 instanceof SpecificData.Array ? (SpecificData.Array<com.udacity.bootstrap.Dog>)a0 : null);
+      SpecificData.Array<DogRecord> ga0 = (a0 instanceof SpecificData.Array ? (SpecificData.Array<DogRecord>)a0 : null);
       for ( ; 0 < size0; size0 = in.arrayNext()) {
         for ( ; size0 != 0; size0--) {
-          com.udacity.bootstrap.Dog e0 = (ga0 != null ? ga0.peek() : null);
+          DogRecord e0 = (ga0 != null ? ga0.peek() : null);
           if (e0 == null) {
-            e0 = new com.udacity.bootstrap.Dog();
+            e0 = new DogRecord();
           }
           e0.customDecode(in);
           a0.add(e0);
@@ -563,17 +562,17 @@ public class Owner extends org.apache.avro.specific.SpecificRecordBase implement
 
         case 3:
           long size0 = in.readArrayStart();
-          java.util.List<com.udacity.bootstrap.Dog> a0 = this.dogs;
+          java.util.List<DogRecord> a0 = this.dogs;
           if (a0 == null) {
-            a0 = new SpecificData.Array<com.udacity.bootstrap.Dog>((int)size0, SCHEMA$.getField("dogs").schema());
+            a0 = new SpecificData.Array<DogRecord>((int)size0, SCHEMA$.getField("dogs").schema());
             this.dogs = a0;
           } else a0.clear();
-          SpecificData.Array<com.udacity.bootstrap.Dog> ga0 = (a0 instanceof SpecificData.Array ? (SpecificData.Array<com.udacity.bootstrap.Dog>)a0 : null);
+          SpecificData.Array<DogRecord> ga0 = (a0 instanceof SpecificData.Array ? (SpecificData.Array<DogRecord>)a0 : null);
           for ( ; 0 < size0; size0 = in.arrayNext()) {
             for ( ; size0 != 0; size0--) {
-              com.udacity.bootstrap.Dog e0 = (ga0 != null ? ga0.peek() : null);
+              DogRecord e0 = (ga0 != null ? ga0.peek() : null);
               if (e0 == null) {
-                e0 = new com.udacity.bootstrap.Dog();
+                e0 = new DogRecord();
               }
               e0.customDecode(in);
               a0.add(e0);

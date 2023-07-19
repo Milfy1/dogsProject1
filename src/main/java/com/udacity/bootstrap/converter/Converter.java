@@ -8,10 +8,10 @@ package com.udacity.bootstrap.converter;
         import java.util.stream.Collectors;
 
 @Component
-public class ConverterDTO {
+public class Converter {
     private final ModelMapper modelMapper;
 
-    public ConverterDTO() {
+    public Converter() {
         this.modelMapper = new ModelMapper();
         modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
     }

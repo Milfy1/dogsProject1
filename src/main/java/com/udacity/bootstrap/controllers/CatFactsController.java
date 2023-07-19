@@ -18,6 +18,4 @@ public class CatFactsController {
     public String Getfact(){
         return catFactsService.GetCatFact();
     }
-
-
 }

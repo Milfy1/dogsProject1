@@ -3,9 +3,8 @@
  *
  * DO NOT EDIT DIRECTLY
  */
-package com.udacity.bootstrap;
+package com.udacity.bootstrap.AvroRecords;
 
-import org.apache.avro.generic.GenericArray;
 import org.apache.avro.specific.SpecificData;
 import org.apache.avro.util.Utf8;
 import org.apache.avro.message.BinaryMessageEncoder;
@@ -13,7 +12,7 @@ import org.apache.avro.message.BinaryMessageDecoder;
 import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
-public class AirTag extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
+public class AirTagRecord extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
   private static final long serialVersionUID = 821785113778542813L;
 
 
@@ -22,17 +21,17 @@ public class AirTag extends org.apache.avro.specific.SpecificRecordBase implemen
 
   private static final SpecificData MODEL$ = new SpecificData();
 
-  private static final BinaryMessageEncoder<AirTag> ENCODER =
+  private static final BinaryMessageEncoder<AirTagRecord> ENCODER =
       new BinaryMessageEncoder<>(MODEL$, SCHEMA$);
 
-  private static final BinaryMessageDecoder<AirTag> DECODER =
+  private static final BinaryMessageDecoder<AirTagRecord> DECODER =
       new BinaryMessageDecoder<>(MODEL$, SCHEMA$);
 
   /**
    * Return the BinaryMessageEncoder instance used by this class.
    * @return the message encoder used by this class
    */
-  public static BinaryMessageEncoder<AirTag> getEncoder() {
+  public static BinaryMessageEncoder<AirTagRecord> getEncoder() {
     return ENCODER;
   }
 
@@ -40,7 +39,7 @@ public class AirTag extends org.apache.avro.specific.SpecificRecordBase implemen
    * Return the BinaryMessageDecoder instance used by this class.
    * @return the message decoder used by this class
    */
-  public static BinaryMessageDecoder<AirTag> getDecoder() {
+  public static BinaryMessageDecoder<AirTagRecord> getDecoder() {
     return DECODER;
   }
 
@@ -49,7 +48,7 @@ public class AirTag extends org.apache.avro.specific.SpecificRecordBase implemen
    * @param resolver a {@link SchemaStore} used to find schemas by fingerprint
    * @return a BinaryMessageDecoder instance for this class backed by the given SchemaStore
    */
-  public static BinaryMessageDecoder<AirTag> createDecoder(SchemaStore resolver) {
+  public static BinaryMessageDecoder<AirTagRecord> createDecoder(SchemaStore resolver) {
     return new BinaryMessageDecoder<>(MODEL$, SCHEMA$, resolver);
   }
 
@@ -68,7 +67,7 @@ public class AirTag extends org.apache.avro.specific.SpecificRecordBase implemen
    * @return a AirTag instance decoded from the given buffer
    * @throws java.io.IOException if the given bytes could not be deserialized into an instance of this class
    */
-  public static AirTag fromByteBuffer(
+  public static AirTagRecord fromByteBuffer(
       java.nio.ByteBuffer b) throws java.io.IOException {
     return DECODER.decode(b);
   }
@@ -82,7 +81,7 @@ public class AirTag extends org.apache.avro.specific.SpecificRecordBase implemen
    * to their default values from the schema.  If that is desired then
    * one should use <code>newBuilder()</code>.
    */
-  public AirTag() {}
+  public AirTagRecord() {}
 
   /**
    * All-args constructor.
@@ -90,7 +89,7 @@ public class AirTag extends org.apache.avro.specific.SpecificRecordBase implemen
    * @param brand The new value for brand
    * @param color The new value for color
    */
-  public AirTag(java.lang.Long id, java.lang.CharSequence brand, java.lang.CharSequence color) {
+  public AirTagRecord(java.lang.Long id, java.lang.CharSequence brand, java.lang.CharSequence color) {
     this.id = id;
     this.brand = brand;
     this.color = color;
@@ -180,8 +179,8 @@ public class AirTag extends org.apache.avro.specific.SpecificRecordBase implemen
    * Creates a new AirTag RecordBuilder.
    * @return A new AirTag RecordBuilder
    */
-  public static com.udacity.bootstrap.AirTag.Builder newBuilder() {
-    return new com.udacity.bootstrap.AirTag.Builder();
+  public static AirTagRecord.Builder newBuilder() {
+    return new AirTagRecord.Builder();
   }
 
   /**
@@ -189,11 +188,11 @@ public class AirTag extends org.apache.avro.specific.SpecificRecordBase implemen
    * @param other The existing builder to copy.
    * @return A new AirTag RecordBuilder
    */
-  public static com.udacity.bootstrap.AirTag.Builder newBuilder(com.udacity.bootstrap.AirTag.Builder other) {
+  public static AirTagRecord.Builder newBuilder(AirTagRecord.Builder other) {
     if (other == null) {
-      return new com.udacity.bootstrap.AirTag.Builder();
+      return new AirTagRecord.Builder();
     } else {
-      return new com.udacity.bootstrap.AirTag.Builder(other);
+      return new AirTagRecord.Builder(other);
     }
   }
 
@@ -202,11 +201,11 @@ public class AirTag extends org.apache.avro.specific.SpecificRecordBase implemen
    * @param other The existing instance to copy.
    * @return A new AirTag RecordBuilder
    */
-  public static com.udacity.bootstrap.AirTag.Builder newBuilder(com.udacity.bootstrap.AirTag other) {
+  public static AirTagRecord.Builder newBuilder(AirTagRecord other) {
     if (other == null) {
-      return new com.udacity.bootstrap.AirTag.Builder();
+      return new AirTagRecord.Builder();
     } else {
-      return new com.udacity.bootstrap.AirTag.Builder(other);
+      return new AirTagRecord.Builder(other);
     }
   }
 
@@ -214,8 +213,8 @@ public class AirTag extends org.apache.avro.specific.SpecificRecordBase implemen
    * RecordBuilder for AirTag instances.
    */
   @org.apache.avro.specific.AvroGenerated
-  public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<AirTag>
-    implements org.apache.avro.data.RecordBuilder<AirTag> {
+  public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<AirTagRecord>
+    implements org.apache.avro.data.RecordBuilder<AirTagRecord> {
 
     private long id;
     private java.lang.CharSequence brand;
@@ -230,7 +229,7 @@ public class AirTag extends org.apache.avro.specific.SpecificRecordBase implemen
      * Creates a Builder by copying an existing Builder.
      * @param other The existing Builder to copy.
      */
-    private Builder(com.udacity.bootstrap.AirTag.Builder other) {
+    private Builder(AirTagRecord.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.id)) {
         this.id = data().deepCopy(fields()[0].schema(), other.id);
@@ -250,7 +249,7 @@ public class AirTag extends org.apache.avro.specific.SpecificRecordBase implemen
      * Creates a Builder by copying an existing AirTag instance
      * @param other The existing instance to copy.
      */
-    private Builder(com.udacity.bootstrap.AirTag other) {
+    private Builder(AirTagRecord other) {
       super(SCHEMA$, MODEL$);
       if (isValidValue(fields()[0], other.id)) {
         this.id = data().deepCopy(fields()[0].schema(), other.id);
@@ -280,7 +279,7 @@ public class AirTag extends org.apache.avro.specific.SpecificRecordBase implemen
       * @param value The value of 'id'.
       * @return This builder.
       */
-    public com.udacity.bootstrap.AirTag.Builder setId(long value) {
+    public AirTagRecord.Builder setId(long value) {
       validate(fields()[0], value);
       this.id = value;
       fieldSetFlags()[0] = true;
@@ -300,7 +299,7 @@ public class AirTag extends org.apache.avro.specific.SpecificRecordBase implemen
       * Clears the value of the 'id' field.
       * @return This builder.
       */
-    public com.udacity.bootstrap.AirTag.Builder clearId() {
+    public AirTagRecord.Builder clearId() {
       fieldSetFlags()[0] = false;
       return this;
     }
@@ -319,7 +318,7 @@ public class AirTag extends org.apache.avro.specific.SpecificRecordBase implemen
       * @param value The value of 'brand'.
       * @return This builder.
       */
-    public com.udacity.bootstrap.AirTag.Builder setBrand(java.lang.CharSequence value) {
+    public AirTagRecord.Builder setBrand(java.lang.CharSequence value) {
       validate(fields()[1], value);
       this.brand = value;
       fieldSetFlags()[1] = true;
@@ -339,7 +338,7 @@ public class AirTag extends org.apache.avro.specific.SpecificRecordBase implemen
       * Clears the value of the 'brand' field.
       * @return This builder.
       */
-    public com.udacity.bootstrap.AirTag.Builder clearBrand() {
+    public AirTagRecord.Builder clearBrand() {
       brand = null;
       fieldSetFlags()[1] = false;
       return this;
@@ -359,7 +358,7 @@ public class AirTag extends org.apache.avro.specific.SpecificRecordBase implemen
       * @param value The value of 'color'.
       * @return This builder.
       */
-    public com.udacity.bootstrap.AirTag.Builder setColor(java.lang.CharSequence value) {
+    public AirTagRecord.Builder setColor(java.lang.CharSequence value) {
       validate(fields()[2], value);
       this.color = value;
       fieldSetFlags()[2] = true;
@@ -379,7 +378,7 @@ public class AirTag extends org.apache.avro.specific.SpecificRecordBase implemen
       * Clears the value of the 'color' field.
       * @return This builder.
       */
-    public com.udacity.bootstrap.AirTag.Builder clearColor() {
+    public AirTagRecord.Builder clearColor() {
       color = null;
       fieldSetFlags()[2] = false;
       return this;
@@ -387,9 +386,9 @@ public class AirTag extends org.apache.avro.specific.SpecificRecordBase implemen
 
     @Override
     @SuppressWarnings("unchecked")
-    public AirTag build() {
+    public AirTagRecord build() {
       try {
-        AirTag record = new AirTag();
+        AirTagRecord record = new AirTagRecord();
         record.id = fieldSetFlags()[0] ? this.id : (java.lang.Long) defaultValue(fields()[0]);
         record.brand = fieldSetFlags()[1] ? this.brand : (java.lang.CharSequence) defaultValue(fields()[1]);
         record.color = fieldSetFlags()[2] ? this.color : (java.lang.CharSequence) defaultValue(fields()[2]);
@@ -403,8 +402,8 @@ public class AirTag extends org.apache.avro.specific.SpecificRecordBase implemen
   }
 
   @SuppressWarnings("unchecked")
-  private static final org.apache.avro.io.DatumWriter<AirTag>
-    WRITER$ = (org.apache.avro.io.DatumWriter<AirTag>)MODEL$.createDatumWriter(SCHEMA$);
+  private static final org.apache.avro.io.DatumWriter<AirTagRecord>
+    WRITER$ = (org.apache.avro.io.DatumWriter<AirTagRecord>)MODEL$.createDatumWriter(SCHEMA$);
 
   @Override public void writeExternal(java.io.ObjectOutput out)
     throws java.io.IOException {
@@ -412,8 +411,8 @@ public class AirTag extends org.apache.avro.specific.SpecificRecordBase implemen
   }
 
   @SuppressWarnings("unchecked")
-  private static final org.apache.avro.io.DatumReader<AirTag>
-    READER$ = (org.apache.avro.io.DatumReader<AirTag>)MODEL$.createDatumReader(SCHEMA$);
+  private static final org.apache.avro.io.DatumReader<AirTagRecord>
+    READER$ = (org.apache.avro.io.DatumReader<AirTagRecord>)MODEL$.createDatumReader(SCHEMA$);
 
   @Override public void readExternal(java.io.ObjectInput in)
     throws java.io.IOException {

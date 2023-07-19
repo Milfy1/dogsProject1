@@ -3,9 +3,8 @@
  *
  * DO NOT EDIT DIRECTLY
  */
-package com.udacity.bootstrap;
+package com.udacity.bootstrap.AvroRecords;
 
-import org.apache.avro.generic.GenericArray;
 import org.apache.avro.specific.SpecificData;
 import org.apache.avro.util.Utf8;
 import org.apache.avro.message.BinaryMessageEncoder;
@@ -13,7 +12,7 @@ import org.apache.avro.message.BinaryMessageDecoder;
 import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
-public class Dog extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
+public class DogRecord extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
   private static final long serialVersionUID = -8060885629258550289L;
 
 
@@ -22,17 +21,17 @@ public class Dog extends org.apache.avro.specific.SpecificRecordBase implements 
 
   private static final SpecificData MODEL$ = new SpecificData();
 
-  private static final BinaryMessageEncoder<Dog> ENCODER =
+  private static final BinaryMessageEncoder<DogRecord> ENCODER =
       new BinaryMessageEncoder<>(MODEL$, SCHEMA$);
 
-  private static final BinaryMessageDecoder<Dog> DECODER =
+  private static final BinaryMessageDecoder<DogRecord> DECODER =
       new BinaryMessageDecoder<>(MODEL$, SCHEMA$);
 
   /**
    * Return the BinaryMessageEncoder instance used by this class.
    * @return the message encoder used by this class
    */
-  public static BinaryMessageEncoder<Dog> getEncoder() {
+  public static BinaryMessageEncoder<DogRecord> getEncoder() {
     return ENCODER;
   }
 
@@ -40,7 +39,7 @@ public class Dog extends org.apache.avro.specific.SpecificRecordBase implements 
    * Return the BinaryMessageDecoder instance used by this class.
    * @return the message decoder used by this class
    */
-  public static BinaryMessageDecoder<Dog> getDecoder() {
+  public static BinaryMessageDecoder<DogRecord> getDecoder() {
     return DECODER;
   }
 
@@ -49,7 +48,7 @@ public class Dog extends org.apache.avro.specific.SpecificRecordBase implements 
    * @param resolver a {@link SchemaStore} used to find schemas by fingerprint
    * @return a BinaryMessageDecoder instance for this class backed by the given SchemaStore
    */
-  public static BinaryMessageDecoder<Dog> createDecoder(SchemaStore resolver) {
+  public static BinaryMessageDecoder<DogRecord> createDecoder(SchemaStore resolver) {
     return new BinaryMessageDecoder<>(MODEL$, SCHEMA$, resolver);
   }
 
@@ -68,7 +67,7 @@ public class Dog extends org.apache.avro.specific.SpecificRecordBase implements 
    * @return a Dog instance decoded from the given buffer
    * @throws java.io.IOException if the given bytes could not be deserialized into an instance of this class
    */
-  public static Dog fromByteBuffer(
+  public static DogRecord fromByteBuffer(
       java.nio.ByteBuffer b) throws java.io.IOException {
     return DECODER.decode(b);
   }
@@ -78,14 +77,14 @@ public class Dog extends org.apache.avro.specific.SpecificRecordBase implements 
   private java.lang.CharSequence breed;
   private java.lang.CharSequence origin;
   private long fk_owner_id;
-  private com.udacity.bootstrap.AirTag airTag;
+  private AirTagRecord airTag;
 
   /**
    * Default constructor.  Note that this does not initialize fields
    * to their default values from the schema.  If that is desired then
    * one should use <code>newBuilder()</code>.
    */
-  public Dog() {}
+  public DogRecord() {}
 
   /**
    * All-args constructor.
@@ -96,7 +95,7 @@ public class Dog extends org.apache.avro.specific.SpecificRecordBase implements 
    * @param fk_owner_id The new value for fk_owner_id
    * @param airTag The new value for airTag
    */
-  public Dog(java.lang.Long id, java.lang.CharSequence name, java.lang.CharSequence breed, java.lang.CharSequence origin, java.lang.Long fk_owner_id, com.udacity.bootstrap.AirTag airTag) {
+  public DogRecord(java.lang.Long id, java.lang.CharSequence name, java.lang.CharSequence breed, java.lang.CharSequence origin, java.lang.Long fk_owner_id, AirTagRecord airTag) {
     this.id = id;
     this.name = name;
     this.breed = breed;
@@ -135,7 +134,7 @@ public class Dog extends org.apache.avro.specific.SpecificRecordBase implements 
     case 2: breed = (java.lang.CharSequence)value$; break;
     case 3: origin = (java.lang.CharSequence)value$; break;
     case 4: fk_owner_id = (java.lang.Long)value$; break;
-    case 5: airTag = (com.udacity.bootstrap.AirTag)value$; break;
+    case 5: airTag = (AirTagRecord)value$; break;
     default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
     }
   }
@@ -229,7 +228,7 @@ public class Dog extends org.apache.avro.specific.SpecificRecordBase implements 
    * Gets the value of the 'airTag' field.
    * @return The value of the 'airTag' field.
    */
-  public com.udacity.bootstrap.AirTag getAirTag() {
+  public AirTagRecord getAirTag() {
     return airTag;
   }
 
@@ -238,7 +237,7 @@ public class Dog extends org.apache.avro.specific.SpecificRecordBase implements 
    * Sets the value of the 'airTag' field.
    * @param value the value to set.
    */
-  public void setAirTag(com.udacity.bootstrap.AirTag value) {
+  public void setAirTag(AirTagRecord value) {
     this.airTag = value;
   }
 
@@ -246,8 +245,8 @@ public class Dog extends org.apache.avro.specific.SpecificRecordBase implements 
    * Creates a new Dog RecordBuilder.
    * @return A new Dog RecordBuilder
    */
-  public static com.udacity.bootstrap.Dog.Builder newBuilder() {
-    return new com.udacity.bootstrap.Dog.Builder();
+  public static DogRecord.Builder newBuilder() {
+    return new DogRecord.Builder();
   }
 
   /**
@@ -255,11 +254,11 @@ public class Dog extends org.apache.avro.specific.SpecificRecordBase implements 
    * @param other The existing builder to copy.
    * @return A new Dog RecordBuilder
    */
-  public static com.udacity.bootstrap.Dog.Builder newBuilder(com.udacity.bootstrap.Dog.Builder other) {
+  public static DogRecord.Builder newBuilder(DogRecord.Builder other) {
     if (other == null) {
-      return new com.udacity.bootstrap.Dog.Builder();
+      return new DogRecord.Builder();
     } else {
-      return new com.udacity.bootstrap.Dog.Builder(other);
+      return new DogRecord.Builder(other);
     }
   }
 
@@ -268,11 +267,11 @@ public class Dog extends org.apache.avro.specific.SpecificRecordBase implements 
    * @param other The existing instance to copy.
    * @return A new Dog RecordBuilder
    */
-  public static com.udacity.bootstrap.Dog.Builder newBuilder(com.udacity.bootstrap.Dog other) {
+  public static DogRecord.Builder newBuilder(DogRecord other) {
     if (other == null) {
-      return new com.udacity.bootstrap.Dog.Builder();
+      return new DogRecord.Builder();
     } else {
-      return new com.udacity.bootstrap.Dog.Builder(other);
+      return new DogRecord.Builder(other);
     }
   }
 
@@ -280,16 +279,16 @@ public class Dog extends org.apache.avro.specific.SpecificRecordBase implements 
    * RecordBuilder for Dog instances.
    */
   @org.apache.avro.specific.AvroGenerated
-  public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<Dog>
-    implements org.apache.avro.data.RecordBuilder<Dog> {
+  public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<DogRecord>
+    implements org.apache.avro.data.RecordBuilder<DogRecord> {
 
     private long id;
     private java.lang.CharSequence name;
     private java.lang.CharSequence breed;
     private java.lang.CharSequence origin;
     private long fk_owner_id;
-    private com.udacity.bootstrap.AirTag airTag;
-    private com.udacity.bootstrap.AirTag.Builder airTagBuilder;
+    private AirTagRecord airTag;
+    private AirTagRecord.Builder airTagBuilder;
 
     /** Creates a new Builder */
     private Builder() {
@@ -300,7 +299,7 @@ public class Dog extends org.apache.avro.specific.SpecificRecordBase implements 
      * Creates a Builder by copying an existing Builder.
      * @param other The existing Builder to copy.
      */
-    private Builder(com.udacity.bootstrap.Dog.Builder other) {
+    private Builder(DogRecord.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.id)) {
         this.id = data().deepCopy(fields()[0].schema(), other.id);
@@ -327,7 +326,7 @@ public class Dog extends org.apache.avro.specific.SpecificRecordBase implements 
         fieldSetFlags()[5] = other.fieldSetFlags()[5];
       }
       if (other.hasAirTagBuilder()) {
-        this.airTagBuilder = com.udacity.bootstrap.AirTag.newBuilder(other.getAirTagBuilder());
+        this.airTagBuilder = AirTagRecord.newBuilder(other.getAirTagBuilder());
       }
     }
 
@@ -335,7 +334,7 @@ public class Dog extends org.apache.avro.specific.SpecificRecordBase implements 
      * Creates a Builder by copying an existing Dog instance
      * @param other The existing instance to copy.
      */
-    private Builder(com.udacity.bootstrap.Dog other) {
+    private Builder(DogRecord other) {
       super(SCHEMA$, MODEL$);
       if (isValidValue(fields()[0], other.id)) {
         this.id = data().deepCopy(fields()[0].schema(), other.id);
@@ -378,7 +377,7 @@ public class Dog extends org.apache.avro.specific.SpecificRecordBase implements 
       * @param value The value of 'id'.
       * @return This builder.
       */
-    public com.udacity.bootstrap.Dog.Builder setId(long value) {
+    public DogRecord.Builder setId(long value) {
       validate(fields()[0], value);
       this.id = value;
       fieldSetFlags()[0] = true;
@@ -398,7 +397,7 @@ public class Dog extends org.apache.avro.specific.SpecificRecordBase implements 
       * Clears the value of the 'id' field.
       * @return This builder.
       */
-    public com.udacity.bootstrap.Dog.Builder clearId() {
+    public DogRecord.Builder clearId() {
       fieldSetFlags()[0] = false;
       return this;
     }
@@ -417,7 +416,7 @@ public class Dog extends org.apache.avro.specific.SpecificRecordBase implements 
       * @param value The value of 'name'.
       * @return This builder.
       */
-    public com.udacity.bootstrap.Dog.Builder setName(java.lang.CharSequence value) {
+    public DogRecord.Builder setName(java.lang.CharSequence value) {
       validate(fields()[1], value);
       this.name = value;
       fieldSetFlags()[1] = true;
@@ -437,7 +436,7 @@ public class Dog extends org.apache.avro.specific.SpecificRecordBase implements 
       * Clears the value of the 'name' field.
       * @return This builder.
       */
-    public com.udacity.bootstrap.Dog.Builder clearName() {
+    public DogRecord.Builder clearName() {
       name = null;
       fieldSetFlags()[1] = false;
       return this;
@@ -457,7 +456,7 @@ public class Dog extends org.apache.avro.specific.SpecificRecordBase implements 
       * @param value The value of 'breed'.
       * @return This builder.
       */
-    public com.udacity.bootstrap.Dog.Builder setBreed(java.lang.CharSequence value) {
+    public DogRecord.Builder setBreed(java.lang.CharSequence value) {
       validate(fields()[2], value);
       this.breed = value;
       fieldSetFlags()[2] = true;
@@ -477,7 +476,7 @@ public class Dog extends org.apache.avro.specific.SpecificRecordBase implements 
       * Clears the value of the 'breed' field.
       * @return This builder.
       */
-    public com.udacity.bootstrap.Dog.Builder clearBreed() {
+    public DogRecord.Builder clearBreed() {
       breed = null;
       fieldSetFlags()[2] = false;
       return this;
@@ -497,7 +496,7 @@ public class Dog extends org.apache.avro.specific.SpecificRecordBase implements 
       * @param value The value of 'origin'.
       * @return This builder.
       */
-    public com.udacity.bootstrap.Dog.Builder setOrigin(java.lang.CharSequence value) {
+    public DogRecord.Builder setOrigin(java.lang.CharSequence value) {
       validate(fields()[3], value);
       this.origin = value;
       fieldSetFlags()[3] = true;
@@ -517,7 +516,7 @@ public class Dog extends org.apache.avro.specific.SpecificRecordBase implements 
       * Clears the value of the 'origin' field.
       * @return This builder.
       */
-    public com.udacity.bootstrap.Dog.Builder clearOrigin() {
+    public DogRecord.Builder clearOrigin() {
       origin = null;
       fieldSetFlags()[3] = false;
       return this;
@@ -537,7 +536,7 @@ public class Dog extends org.apache.avro.specific.SpecificRecordBase implements 
       * @param value The value of 'fk_owner_id'.
       * @return This builder.
       */
-    public com.udacity.bootstrap.Dog.Builder setFkOwnerId(long value) {
+    public DogRecord.Builder setFkOwnerId(long value) {
       validate(fields()[4], value);
       this.fk_owner_id = value;
       fieldSetFlags()[4] = true;
@@ -557,7 +556,7 @@ public class Dog extends org.apache.avro.specific.SpecificRecordBase implements 
       * Clears the value of the 'fk_owner_id' field.
       * @return This builder.
       */
-    public com.udacity.bootstrap.Dog.Builder clearFkOwnerId() {
+    public DogRecord.Builder clearFkOwnerId() {
       fieldSetFlags()[4] = false;
       return this;
     }
@@ -566,7 +565,7 @@ public class Dog extends org.apache.avro.specific.SpecificRecordBase implements 
       * Gets the value of the 'airTag' field.
       * @return The value.
       */
-    public com.udacity.bootstrap.AirTag getAirTag() {
+    public AirTagRecord getAirTag() {
       return airTag;
     }
 
@@ -576,7 +575,7 @@ public class Dog extends org.apache.avro.specific.SpecificRecordBase implements 
       * @param value The value of 'airTag'.
       * @return This builder.
       */
-    public com.udacity.bootstrap.Dog.Builder setAirTag(com.udacity.bootstrap.AirTag value) {
+    public DogRecord.Builder setAirTag(AirTagRecord value) {
       validate(fields()[5], value);
       this.airTagBuilder = null;
       this.airTag = value;
@@ -596,12 +595,12 @@ public class Dog extends org.apache.avro.specific.SpecificRecordBase implements 
      * Gets the Builder instance for the 'airTag' field and creates one if it doesn't exist yet.
      * @return This builder.
      */
-    public com.udacity.bootstrap.AirTag.Builder getAirTagBuilder() {
+    public AirTagRecord.Builder getAirTagBuilder() {
       if (airTagBuilder == null) {
         if (hasAirTag()) {
-          setAirTagBuilder(com.udacity.bootstrap.AirTag.newBuilder(airTag));
+          setAirTagBuilder(AirTagRecord.newBuilder(airTag));
         } else {
-          setAirTagBuilder(com.udacity.bootstrap.AirTag.newBuilder());
+          setAirTagBuilder(AirTagRecord.newBuilder());
         }
       }
       return airTagBuilder;
@@ -613,7 +612,7 @@ public class Dog extends org.apache.avro.specific.SpecificRecordBase implements 
      * @return This builder.
      */
 
-    public com.udacity.bootstrap.Dog.Builder setAirTagBuilder(com.udacity.bootstrap.AirTag.Builder value) {
+    public DogRecord.Builder setAirTagBuilder(AirTagRecord.Builder value) {
       clearAirTag();
       airTagBuilder = value;
       return this;
@@ -631,7 +630,7 @@ public class Dog extends org.apache.avro.specific.SpecificRecordBase implements 
       * Clears the value of the 'airTag' field.
       * @return This builder.
       */
-    public com.udacity.bootstrap.Dog.Builder clearAirTag() {
+    public DogRecord.Builder clearAirTag() {
       airTag = null;
       airTagBuilder = null;
       fieldSetFlags()[5] = false;
@@ -640,9 +639,9 @@ public class Dog extends org.apache.avro.specific.SpecificRecordBase implements 
 
     @Override
     @SuppressWarnings("unchecked")
-    public Dog build() {
+    public DogRecord build() {
       try {
-        Dog record = new Dog();
+        DogRecord record = new DogRecord();
         record.id = fieldSetFlags()[0] ? this.id : (java.lang.Long) defaultValue(fields()[0]);
         record.name = fieldSetFlags()[1] ? this.name : (java.lang.CharSequence) defaultValue(fields()[1]);
         record.breed = fieldSetFlags()[2] ? this.breed : (java.lang.CharSequence) defaultValue(fields()[2]);
@@ -656,7 +655,7 @@ public class Dog extends org.apache.avro.specific.SpecificRecordBase implements 
             throw e;
           }
         } else {
-          record.airTag = fieldSetFlags()[5] ? this.airTag : (com.udacity.bootstrap.AirTag) defaultValue(fields()[5]);
+          record.airTag = fieldSetFlags()[5] ? this.airTag : (AirTagRecord) defaultValue(fields()[5]);
         }
         return record;
       } catch (org.apache.avro.AvroMissingFieldException e) {
@@ -668,8 +667,8 @@ public class Dog extends org.apache.avro.specific.SpecificRecordBase implements 
   }
 
   @SuppressWarnings("unchecked")
-  private static final org.apache.avro.io.DatumWriter<Dog>
-    WRITER$ = (org.apache.avro.io.DatumWriter<Dog>)MODEL$.createDatumWriter(SCHEMA$);
+  private static final org.apache.avro.io.DatumWriter<DogRecord>
+    WRITER$ = (org.apache.avro.io.DatumWriter<DogRecord>)MODEL$.createDatumWriter(SCHEMA$);
 
   @Override public void writeExternal(java.io.ObjectOutput out)
     throws java.io.IOException {
@@ -677,8 +676,8 @@ public class Dog extends org.apache.avro.specific.SpecificRecordBase implements 
   }
 
   @SuppressWarnings("unchecked")
-  private static final org.apache.avro.io.DatumReader<Dog>
-    READER$ = (org.apache.avro.io.DatumReader<Dog>)MODEL$.createDatumReader(SCHEMA$);
+  private static final org.apache.avro.io.DatumReader<DogRecord>
+    READER$ = (org.apache.avro.io.DatumReader<DogRecord>)MODEL$.createDatumReader(SCHEMA$);
 
   @Override public void readExternal(java.io.ObjectInput in)
     throws java.io.IOException {
@@ -720,7 +719,7 @@ public class Dog extends org.apache.avro.specific.SpecificRecordBase implements 
       this.fk_owner_id = in.readLong();
 
       if (this.airTag == null) {
-        this.airTag = new com.udacity.bootstrap.AirTag();
+        this.airTag = new AirTagRecord();
       }
       this.airTag.customDecode(in);
 
@@ -749,7 +748,7 @@ public class Dog extends org.apache.avro.specific.SpecificRecordBase implements 
 
         case 5:
           if (this.airTag == null) {
-            this.airTag = new com.udacity.bootstrap.AirTag();
+            this.airTag = new AirTagRecord();
           }
           this.airTag.customDecode(in);
           break;

@@ -6,11 +6,9 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class KafkaProducer<T> {
-    private final Serializer<T> serializer;
     private final KafkaTemplate<String,T> kafkaTemplate;
 
-    public KafkaProducer(Serializer<T> serializer, KafkaTemplate<String, T> kafkaTemplate) {
-        this.serializer = serializer;
+    public KafkaProducer( KafkaTemplate<String, T> kafkaTemplate) {
         this.kafkaTemplate = kafkaTemplate;
     }
 

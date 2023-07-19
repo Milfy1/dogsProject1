@@ -1,9 +1,9 @@
 package com.udacity.bootstrap.servicesImpl;
 
+import com.udacity.bootstrap.AvroRecords.AirTagRecord;
 import com.udacity.bootstrap.DTO.AirTagDTO;
-import com.udacity.bootstrap.KafkaConsumer.AirTagKafkaConsumer;
 import com.udacity.bootstrap.KafkaProducer.KafkaProducer;
-import com.udacity.bootstrap.converter.ConverterDTO;
+import com.udacity.bootstrap.converter.Converter;
 import com.udacity.bootstrap.entity.AirTag;
 import com.udacity.bootstrap.exceptions.AirTagNotFoundException;
 import com.udacity.bootstrap.repo.AirTagRepo;
@@ -17,41 +17,42 @@ import java.util.Optional;
 public class AirTagImpl implements AirTagService {
 
 
-    private final ConverterDTO converterDTO;
+    private final Converter converter;
 
-    private final KafkaProducer<AirTag> kafkaProducer;
+    private final KafkaProducer<AirTagRecord> kafkaProducer;
 
 
 
     private final AirTagRepo airTagRepo;
 
-    public AirTagImpl(ConverterDTO converterDTO, KafkaProducer<AirTag> kafkaProducer, AirTagRepo airTagRepo) {
-        this.converterDTO = converterDTO;
+    public AirTagImpl(Converter converter, KafkaProducer<AirTagRecord> kafkaProducer, AirTagRepo airTagRepo) {
+        this.converter = converter;
         this.kafkaProducer = kafkaProducer;
         this.airTagRepo = airTagRepo;
     }
 
     @Override
     public AirTagDTO createAirTag(AirTagDTO airTagDTO) {
-        AirTag airTag = converterDTO.convert(airTagDTO, AirTag.class);
+        AirTag airTag = converter.convert(airTagDTO, AirTag.class);
         airTagRepo.save(airTag);
-        kafkaProducer.sendmessage("AirTag", airTag);
+        AirTagRecord a = converter.convert(airTagDTO, AirTagRecord.class);
+        kafkaProducer.sendmessage("AirTag", a);
         return airTagDTO;
     }
 
     @Override
     public List<AirTagDTO> getAirTags() {
         List<AirTag> airTags = airTagRepo.findAll();
-        return converterDTO.toList(airTags, AirTagDTO.class);
+        return converter.toList(airTags, AirTagDTO.class);
     }
 
     @Override
     public AirTagDTO updateAirTag(AirTagDTO airTagDTO, Long id) {
         if (airTagRepo.findById(id).isPresent()){
             airTagDTO.setId(id);
-            AirTag airTag = converterDTO.convert(airTagDTO,AirTag.class);
+            AirTag airTag = converter.convert(airTagDTO,AirTag.class);
             airTagRepo.save(airTag);
-            return converterDTO.convert(airTag, AirTagDTO.class);
+            return converter.convert(airTag, AirTagDTO.class);
         } else {
            throw new AirTagNotFoundException(id.toString());
         }

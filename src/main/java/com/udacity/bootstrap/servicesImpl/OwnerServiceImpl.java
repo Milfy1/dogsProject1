@@ -1,9 +1,8 @@
 package com.udacity.bootstrap.servicesImpl;
 
 import com.udacity.bootstrap.DTO.OwnerDTO;
-import com.udacity.bootstrap.KafkaConsumer.OwnerKafkaConsumer;
 import com.udacity.bootstrap.KafkaProducer.KafkaProducer;
-import com.udacity.bootstrap.converter.ConverterDTO;
+import com.udacity.bootstrap.converter.Converter;
 import com.udacity.bootstrap.entity.Owner;
 import com.udacity.bootstrap.exceptions.OwnerNotFoundException;
 import com.udacity.bootstrap.repo.OwnerRepo;
@@ -19,18 +18,18 @@ public class OwnerServiceImpl implements OwnerService {
 
     private final OwnerRepo ownerRepo;
 
-    private final ConverterDTO converterDTO;
+    private final Converter converter;
     private final KafkaProducer<Owner> kafkaProducer;
 
 
-    public OwnerServiceImpl(OwnerRepo ownerRepo, ConverterDTO converterDTO, KafkaProducer<Owner> kafkaProducer) {
+    public OwnerServiceImpl(OwnerRepo ownerRepo, Converter converter, KafkaProducer<Owner> kafkaProducer) {
         this.ownerRepo = ownerRepo;
-        this.converterDTO = converterDTO;
+        this.converter = converter;
         this.kafkaProducer = kafkaProducer;
     }
 
     public OwnerDTO createOwner(OwnerDTO ownerDTO) {
-        Owner owner = converterDTO.convert(ownerDTO, Owner.class);
+        Owner owner = converter.convert(ownerDTO, Owner.class);
         ownerRepo.save(owner);
         kafkaProducer.sendmessage("Owner",owner);
         return ownerDTO;
@@ -40,15 +39,15 @@ public class OwnerServiceImpl implements OwnerService {
 
     public List<OwnerDTO> getOwners(){
         List<Owner> owners = ownerRepo.findAll();
-        return converterDTO.toList(owners,OwnerDTO.class);
+        return converter.toList(owners,OwnerDTO.class);
     }
 
     public OwnerDTO updateOwner(OwnerDTO ownerDTO, Long id) {
         if (ownerRepo.findById(id).isPresent()){
             ownerDTO.setId(id);
-            Owner owner = converterDTO.convert(ownerDTO,Owner.class);
+            Owner owner = converter.convert(ownerDTO,Owner.class);
             ownerRepo.save(owner);
-            return converterDTO.convert(owner, OwnerDTO.class);
+            return converter.convert(owner, OwnerDTO.class);
         } else {
             throw new OwnerNotFoundException(id.toString());
         }
