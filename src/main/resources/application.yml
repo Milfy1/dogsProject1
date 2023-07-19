@@ -3,7 +3,7 @@ server:
 spring:
   datasource:
     password: postgres
-    url: jdbc:postgresql://localhost:5432/abdullah
+    url: jdbc:postgresql://localhost:5432/student
     username: postgres
   jpa:
     hibernate:
@@ -32,11 +32,11 @@ spring:
     consumer:
       value-deserializer:  io.confluent.kafka.serializers.KafkaAvroDeserializer
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      auto-offset-reset: earliest
+      auto-offset-reset: latest
       properties:
         specific:
           avro:
-            reader: true
+            reader: false
 
 
 
