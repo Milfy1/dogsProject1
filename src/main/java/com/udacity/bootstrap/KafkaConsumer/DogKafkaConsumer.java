@@ -20,7 +20,7 @@ public class DogKafkaConsumer {
     }
 
 
-    @KafkaListener(topics = {"Dog"}, groupId = "your-group-id")
+    @KafkaListener(topics = {"Dog"}, groupId = "1")
     public void receiveMessage(@Payload ConsumerRecord<String, DogRecord>  message, @Header(KafkaHeaders.RECEIVED_TOPIC) String topic) {
         // Process the received Avro message
 //        Dog data = deSerializer.deserialize(Dog.class,message);

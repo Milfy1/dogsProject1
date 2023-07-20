@@ -1,0 +1,18 @@
+version: "2.2"
+
+services:
+  dogs:
+    image: dogs:latest
+    ports:
+      - "8082:8080"
+
+    depends_on:
+    - postgres
+  postgres:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=Mohammad10
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=test

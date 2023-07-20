@@ -18,7 +18,7 @@ public class CatFactKafkaConsumer {
     }
 
 
-    @KafkaListener(topics = {"Cat_Facts"}, groupId = "your-group-id")
+    @KafkaListener(topics = {"Cat_Facts"}, groupId = "1")
     public void receiveMessage(@Payload ConsumerRecord<String, CatFactRecord> message, @Header(KafkaHeaders.RECEIVED_TOPIC) String topic) {
         // Process the received Avro message
 

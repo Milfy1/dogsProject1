@@ -21,7 +21,7 @@ public class OwnerKafkaConsumer {
     }
 
 
-    @KafkaListener(topics = {"Owner"}, groupId = "your-group-id")
+    @KafkaListener(topics = {"Owner"}, groupId = "1")
     public void receiveMessage(@Payload ConsumerRecord<String, OwnerRecord> message, @Header(KafkaHeaders.RECEIVED_TOPIC) String topic) {
         // Process the received Avro message
 //        Owner data = deSerializer.deserialize(Owner.class,message);
