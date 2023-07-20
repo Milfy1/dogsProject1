@@ -2,13 +2,10 @@ package com.udacity.bootstrap;
 //zeadoo
 //Mohammed-Aldrees
 //Tareq-Assiri
-import com.udacity.bootstrap.AvroRecords.AirTagRecord;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.info.Info;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ApplicationContext;
-import org.springframework.kafka.core.KafkaTemplate;
 
 
 @SpringBootApplication

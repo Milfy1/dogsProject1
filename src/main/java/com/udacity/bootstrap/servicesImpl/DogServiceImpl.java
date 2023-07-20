@@ -30,8 +30,8 @@ public class DogServiceImpl implements DogService {
     public DogDTO createDog(DogDTO dogDTO) {
         Dog dog = converter.convert(dogDTO, Dog.class);
         dogRepo.save(dog);
-        DogRecord d = converter.convert(dogDTO, DogRecord.class);
-        kafkaProducer.sendmessage("Dog", d);
+        DogRecord dogRec = converter.convert(dogDTO, DogRecord.class);
+        kafkaProducer.sendmessage("Dog", dogRec);
         return dogDTO;
     }
 

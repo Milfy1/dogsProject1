@@ -13,10 +13,10 @@ import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
 public class DogRecord extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = -8060885629258550289L;
+  private static final long serialVersionUID = 4594127068551739967L;
 
 
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Dog\",\"namespace\":\"com.udacity.bootstrap\",\"fields\":[{\"name\":\"id\",\"type\":\"long\"},{\"name\":\"name\",\"type\":\"string\"},{\"name\":\"breed\",\"type\":\"string\"},{\"name\":\"origin\",\"type\":\"string\"},{\"name\":\"fk_owner_id\",\"type\":\"long\"},{\"name\":\"airTag\",\"type\":{\"type\":\"record\",\"name\":\"AirTag\",\"fields\":[{\"name\":\"id\",\"type\":\"long\"},{\"name\":\"brand\",\"type\":\"string\"},{\"name\":\"color\",\"type\":\"string\"}]}}]}");
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Dog\",\"namespace\":\"com.udacity.bootstrap\",\"fields\":[{\"name\":\"id\",\"type\":\"long\"},{\"name\":\"name\",\"type\":\"string\"},{\"name\":\"breed\",\"type\":\"string\"},{\"name\":\"origin\",\"type\":\"string\"},{\"name\":\"fk_owner_id\",\"type\":\"long\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static final SpecificData MODEL$ = new SpecificData();
@@ -77,7 +77,6 @@ public class DogRecord extends org.apache.avro.specific.SpecificRecordBase imple
   private java.lang.CharSequence breed;
   private java.lang.CharSequence origin;
   private long fk_owner_id;
-  private AirTagRecord airTag;
 
   /**
    * Default constructor.  Note that this does not initialize fields
@@ -93,15 +92,13 @@ public class DogRecord extends org.apache.avro.specific.SpecificRecordBase imple
    * @param breed The new value for breed
    * @param origin The new value for origin
    * @param fk_owner_id The new value for fk_owner_id
-   * @param airTag The new value for airTag
    */
-  public DogRecord(java.lang.Long id, java.lang.CharSequence name, java.lang.CharSequence breed, java.lang.CharSequence origin, java.lang.Long fk_owner_id, AirTagRecord airTag) {
+  public DogRecord(java.lang.Long id, java.lang.CharSequence name, java.lang.CharSequence breed, java.lang.CharSequence origin, java.lang.Long fk_owner_id) {
     this.id = id;
     this.name = name;
     this.breed = breed;
     this.origin = origin;
     this.fk_owner_id = fk_owner_id;
-    this.airTag = airTag;
   }
 
   @Override
@@ -119,7 +116,6 @@ public class DogRecord extends org.apache.avro.specific.SpecificRecordBase imple
     case 2: return breed;
     case 3: return origin;
     case 4: return fk_owner_id;
-    case 5: return airTag;
     default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
     }
   }
@@ -134,7 +130,6 @@ public class DogRecord extends org.apache.avro.specific.SpecificRecordBase imple
     case 2: breed = (java.lang.CharSequence)value$; break;
     case 3: origin = (java.lang.CharSequence)value$; break;
     case 4: fk_owner_id = (java.lang.Long)value$; break;
-    case 5: airTag = (AirTagRecord)value$; break;
     default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
     }
   }
@@ -225,23 +220,6 @@ public class DogRecord extends org.apache.avro.specific.SpecificRecordBase imple
   }
 
   /**
-   * Gets the value of the 'airTag' field.
-   * @return The value of the 'airTag' field.
-   */
-  public AirTagRecord getAirTag() {
-    return airTag;
-  }
-
-
-  /**
-   * Sets the value of the 'airTag' field.
-   * @param value the value to set.
-   */
-  public void setAirTag(AirTagRecord value) {
-    this.airTag = value;
-  }
-
-  /**
    * Creates a new Dog RecordBuilder.
    * @return A new Dog RecordBuilder
    */
@@ -287,8 +265,6 @@ public class DogRecord extends org.apache.avro.specific.SpecificRecordBase imple
     private java.lang.CharSequence breed;
     private java.lang.CharSequence origin;
     private long fk_owner_id;
-    private AirTagRecord airTag;
-    private AirTagRecord.Builder airTagBuilder;
 
     /** Creates a new Builder */
     private Builder() {
@@ -321,13 +297,6 @@ public class DogRecord extends org.apache.avro.specific.SpecificRecordBase imple
         this.fk_owner_id = data().deepCopy(fields()[4].schema(), other.fk_owner_id);
         fieldSetFlags()[4] = other.fieldSetFlags()[4];
       }
-      if (isValidValue(fields()[5], other.airTag)) {
-        this.airTag = data().deepCopy(fields()[5].schema(), other.airTag);
-        fieldSetFlags()[5] = other.fieldSetFlags()[5];
-      }
-      if (other.hasAirTagBuilder()) {
-        this.airTagBuilder = AirTagRecord.newBuilder(other.getAirTagBuilder());
-      }
     }
 
     /**
@@ -356,11 +325,6 @@ public class DogRecord extends org.apache.avro.specific.SpecificRecordBase imple
         this.fk_owner_id = data().deepCopy(fields()[4].schema(), other.fk_owner_id);
         fieldSetFlags()[4] = true;
       }
-      if (isValidValue(fields()[5], other.airTag)) {
-        this.airTag = data().deepCopy(fields()[5].schema(), other.airTag);
-        fieldSetFlags()[5] = true;
-      }
-      this.airTagBuilder = null;
     }
 
     /**
@@ -561,82 +525,6 @@ public class DogRecord extends org.apache.avro.specific.SpecificRecordBase imple
       return this;
     }
 
-    /**
-      * Gets the value of the 'airTag' field.
-      * @return The value.
-      */
-    public AirTagRecord getAirTag() {
-      return airTag;
-    }
-
-
-    /**
-      * Sets the value of the 'airTag' field.
-      * @param value The value of 'airTag'.
-      * @return This builder.
-      */
-    public DogRecord.Builder setAirTag(AirTagRecord value) {
-      validate(fields()[5], value);
-      this.airTagBuilder = null;
-      this.airTag = value;
-      fieldSetFlags()[5] = true;
-      return this;
-    }
-
-    /**
-      * Checks whether the 'airTag' field has been set.
-      * @return True if the 'airTag' field has been set, false otherwise.
-      */
-    public boolean hasAirTag() {
-      return fieldSetFlags()[5];
-    }
-
-    /**
-     * Gets the Builder instance for the 'airTag' field and creates one if it doesn't exist yet.
-     * @return This builder.
-     */
-    public AirTagRecord.Builder getAirTagBuilder() {
-      if (airTagBuilder == null) {
-        if (hasAirTag()) {
-          setAirTagBuilder(AirTagRecord.newBuilder(airTag));
-        } else {
-          setAirTagBuilder(AirTagRecord.newBuilder());
-        }
-      }
-      return airTagBuilder;
-    }
-
-    /**
-     * Sets the Builder instance for the 'airTag' field
-     * @param value The builder instance that must be set.
-     * @return This builder.
-     */
-
-    public DogRecord.Builder setAirTagBuilder(AirTagRecord.Builder value) {
-      clearAirTag();
-      airTagBuilder = value;
-      return this;
-    }
-
-    /**
-     * Checks whether the 'airTag' field has an active Builder instance
-     * @return True if the 'airTag' field has an active Builder instance
-     */
-    public boolean hasAirTagBuilder() {
-      return airTagBuilder != null;
-    }
-
-    /**
-      * Clears the value of the 'airTag' field.
-      * @return This builder.
-      */
-    public DogRecord.Builder clearAirTag() {
-      airTag = null;
-      airTagBuilder = null;
-      fieldSetFlags()[5] = false;
-      return this;
-    }
-
     @Override
     @SuppressWarnings("unchecked")
     public DogRecord build() {
@@ -647,16 +535,6 @@ public class DogRecord extends org.apache.avro.specific.SpecificRecordBase imple
         record.breed = fieldSetFlags()[2] ? this.breed : (java.lang.CharSequence) defaultValue(fields()[2]);
         record.origin = fieldSetFlags()[3] ? this.origin : (java.lang.CharSequence) defaultValue(fields()[3]);
         record.fk_owner_id = fieldSetFlags()[4] ? this.fk_owner_id : (java.lang.Long) defaultValue(fields()[4]);
-        if (airTagBuilder != null) {
-          try {
-            record.airTag = this.airTagBuilder.build();
-          } catch (org.apache.avro.AvroMissingFieldException e) {
-            e.addParentField(record.getSchema().getField("airTag"));
-            throw e;
-          }
-        } else {
-          record.airTag = fieldSetFlags()[5] ? this.airTag : (AirTagRecord) defaultValue(fields()[5]);
-        }
         return record;
       } catch (org.apache.avro.AvroMissingFieldException e) {
         throw e;
@@ -699,8 +577,6 @@ public class DogRecord extends org.apache.avro.specific.SpecificRecordBase imple
 
     out.writeLong(this.fk_owner_id);
 
-    this.airTag.customEncode(out);
-
   }
 
   @Override public void customDecode(org.apache.avro.io.ResolvingDecoder in)
@@ -718,13 +594,8 @@ public class DogRecord extends org.apache.avro.specific.SpecificRecordBase imple
 
       this.fk_owner_id = in.readLong();
 
-      if (this.airTag == null) {
-        this.airTag = new AirTagRecord();
-      }
-      this.airTag.customDecode(in);
-
     } else {
-      for (int i = 0; i < 6; i++) {
+      for (int i = 0; i < 5; i++) {
         switch (fieldOrder[i].pos()) {
         case 0:
           this.id = in.readLong();
@@ -744,13 +615,6 @@ public class DogRecord extends org.apache.avro.specific.SpecificRecordBase imple
 
         case 4:
           this.fk_owner_id = in.readLong();
-          break;
-
-        case 5:
-          if (this.airTag == null) {
-            this.airTag = new AirTagRecord();
-          }
-          this.airTag.customDecode(in);
           break;
 
         default:

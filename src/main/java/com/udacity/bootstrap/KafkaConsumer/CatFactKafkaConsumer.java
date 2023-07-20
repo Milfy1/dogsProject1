@@ -1,6 +1,5 @@
 package com.udacity.bootstrap.KafkaConsumer;
 
-import com.udacity.bootstrap.AvroRecords.AirTagRecord;
 import com.udacity.bootstrap.AvroRecords.CatFactRecord;
 import com.udacity.bootstrap.deserializers.DeSerializer;
 import org.apache.kafka.clients.consumer.ConsumerRecord;

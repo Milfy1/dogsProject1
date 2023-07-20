@@ -1,6 +1,5 @@
 package com.udacity.bootstrap.KafkaConsumer;
 
-import com.udacity.bootstrap.AvroRecords.AirTagRecord;
 import com.udacity.bootstrap.AvroRecords.DogRecord;
 import com.udacity.bootstrap.deserializers.DeSerializer;
 import com.udacity.bootstrap.entity.Dog;

@@ -1,5 +1,6 @@
 package com.udacity.bootstrap.servicesImpl;
 
+import com.udacity.bootstrap.AvroRecords.OwnerRecord;
 import com.udacity.bootstrap.DTO.OwnerDTO;
 import com.udacity.bootstrap.KafkaProducer.KafkaProducer;
 import com.udacity.bootstrap.converter.Converter;
@@ -19,10 +20,10 @@ public class OwnerServiceImpl implements OwnerService {
     private final OwnerRepo ownerRepo;
 
     private final Converter converter;
-    private final KafkaProducer<Owner> kafkaProducer;
+    private final KafkaProducer<OwnerRecord> kafkaProducer;
 
 
-    public OwnerServiceImpl(OwnerRepo ownerRepo, Converter converter, KafkaProducer<Owner> kafkaProducer) {
+    public OwnerServiceImpl(OwnerRepo ownerRepo, Converter converter, KafkaProducer<OwnerRecord> kafkaProducer) {
         this.ownerRepo = ownerRepo;
         this.converter = converter;
         this.kafkaProducer = kafkaProducer;
@@ -31,7 +32,8 @@ public class OwnerServiceImpl implements OwnerService {
     public OwnerDTO createOwner(OwnerDTO ownerDTO) {
         Owner owner = converter.convert(ownerDTO, Owner.class);
         ownerRepo.save(owner);
-        kafkaProducer.sendmessage("Owner",owner);
+        OwnerRecord ownerRec = converter.convert(ownerDTO, OwnerRecord.class);
+        kafkaProducer.sendmessage("Owner",ownerRec);
         return ownerDTO;
     }
     

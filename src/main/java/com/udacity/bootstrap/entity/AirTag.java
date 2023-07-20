@@ -17,5 +17,4 @@ public class AirTag {
     private Long id;
     private String brand;
     private String color;
-
 }

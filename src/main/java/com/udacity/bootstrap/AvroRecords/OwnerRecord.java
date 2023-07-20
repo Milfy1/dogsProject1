@@ -13,10 +13,10 @@ import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
 public class OwnerRecord extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 8415496220242173273L;
+  private static final long serialVersionUID = 8368339717077957543L;
 
 
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Owner\",\"namespace\":\"com.udacity.bootstrap\",\"fields\":[{\"name\":\"id\",\"type\":\"long\"},{\"name\":\"name\",\"type\":\"string\"},{\"name\":\"age\",\"type\":\"int\"},{\"name\":\"dogs\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"Dog\",\"fields\":[{\"name\":\"id\",\"type\":\"long\"},{\"name\":\"name\",\"type\":\"string\"},{\"name\":\"breed\",\"type\":\"string\"},{\"name\":\"origin\",\"type\":\"string\"},{\"name\":\"fk_owner_id\",\"type\":\"long\"},{\"name\":\"airTag\",\"type\":{\"type\":\"record\",\"name\":\"AirTag\",\"fields\":[{\"name\":\"id\",\"type\":\"long\"},{\"name\":\"brand\",\"type\":\"string\"},{\"name\":\"color\",\"type\":\"string\"}]}}]}}}]}");
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Owner\",\"namespace\":\"com.udacity.bootstrap\",\"fields\":[{\"name\":\"id\",\"type\":\"long\"},{\"name\":\"name\",\"type\":\"string\"},{\"name\":\"age\",\"type\":\"int\"},{\"name\":\"dogs\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"DogRecord\",\"fields\":[{\"name\":\"id\",\"type\":\"long\"},{\"name\":\"name\",\"type\":\"string\"},{\"name\":\"breed\",\"type\":\"string\"},{\"name\":\"origin\",\"type\":\"string\"},{\"name\":\"fk_owner_id\",\"type\":\"long\"}]}},\"default\":[]}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static final SpecificData MODEL$ = new SpecificData();
