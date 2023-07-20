@@ -2,7 +2,7 @@ version: "2.2"
 
 services:
   dogs:
-    image: dogs:latest
+    image: mohammad767/dogs
     ports:
       - "8082:8080"
 
