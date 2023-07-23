@@ -6,6 +6,7 @@ WORKDIR /app
 
 EXPOSE 8080
 COPY . .
+RUN chmod +x ./mvnw 
 RUN echo $PATH
 ENV PATH="$PATH:/app"
 RUN echo $PATH
