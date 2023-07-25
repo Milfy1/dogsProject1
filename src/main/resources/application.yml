@@ -3,7 +3,7 @@ server:
 spring:
   datasource:
     password: mypass
-    url: jdbc:postgresql://localhost:5444/dtmem
+    url: jdbc:postgresql://localhost:5342/test
     username: postgres
   jpa:
     hibernate:
