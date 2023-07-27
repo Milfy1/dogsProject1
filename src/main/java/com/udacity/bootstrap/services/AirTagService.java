@@ -11,4 +11,5 @@ public interface AirTagService {
     public List<AirTagDTO> getAirTags();
     public AirTagDTO updateAirTag(AirTagDTO airTagDTO, Long id);
     public void deleteAirTag(Long id);
+    public String retrieveAirTagLocationById(Long id);
 }
