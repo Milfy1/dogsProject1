@@ -2,12 +2,12 @@ server:
   port: 8080
 spring:
   datasource:
-    password: mypass
-    url: jdbc:postgresql://localhost:5342/test
+    password: Mohammad10
+    url: jdbc:postgresql://localhost:5432/test
     username: postgres
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create-drop
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect

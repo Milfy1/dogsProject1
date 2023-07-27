@@ -20,4 +20,5 @@ public class AirTagDTO {
         @NotBlank(message = "Color shouldn't be null")
         private String Color;
         private Dog dog;
+        private String location;
 }

@@ -44,6 +44,12 @@ public class AirTagController {
         AirTagDTO airTag = airTagService.updateAirTag(airTagDTO , id);
         return new ResponseEntity<AirTagDTO>(airTagDTO,HttpStatus.OK);
     }
+
+    @GetMapping("/location/{id}")
+    public  ResponseEntity<String> retrieveLocationById(@PathVariable Long id){
+        String location = airTagService.retrieveAirTagLocationById(id);
+        return new ResponseEntity<String>(location,HttpStatus.OK) ;
+    }
 //
 //    @PostMapping("/save")
 //    public ResponseEntity<AirTag> addDog(@RequestBody @Valid AirTag airTagDTO){

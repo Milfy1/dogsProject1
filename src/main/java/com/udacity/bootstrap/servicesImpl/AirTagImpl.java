@@ -5,7 +5,9 @@ import com.udacity.bootstrap.DTO.AirTagDTO;
 import com.udacity.bootstrap.KafkaProducer.KafkaProducer;
 import com.udacity.bootstrap.converter.Converter;
 import com.udacity.bootstrap.entity.AirTag;
+import com.udacity.bootstrap.entity.Dog;
 import com.udacity.bootstrap.exceptions.AirTagNotFoundException;
+import com.udacity.bootstrap.exceptions.DogNotFoundException;
 import com.udacity.bootstrap.repo.AirTagRepo;
 import com.udacity.bootstrap.services.AirTagService;
 import org.springframework.stereotype.Service;
@@ -65,5 +67,13 @@ public class AirTagImpl implements AirTagService {
             throw new AirTagNotFoundException(id.toString());
         }
         airTagRepo.delete(optionalAirTag.get());
+    }
+    public String retrieveAirTagLocationById(Long id) {
+        Optional<AirTag> a = airTagRepo.findById(id);
+        if (a.isPresent()){
+            return airTagRepo.findLocationById(id);
+        } else {
+            throw new DogNotFoundException(id.toString());
+        }
     }
 }
