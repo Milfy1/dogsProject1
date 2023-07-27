@@ -8,15 +8,17 @@ import org.springframework.web.client.RestTemplate;
 public class CatFactsServiceImpl implements CatFactsService {
 
     private final KafkaProducer<String> kafkaProducer;
+    private final RestTemplate restTemplate;
 
-    public CatFactsServiceImpl(KafkaProducer<String> kafkaProducer) {
+
+    public CatFactsServiceImpl(KafkaProducer<String> kafkaProducer, RestTemplate restTemplate) {
         this.kafkaProducer = kafkaProducer;
+        this.restTemplate = restTemplate;
     }
 
     @Override
     public String GetCatFact() {
         String url = "https://catfact.ninja/fact";
-        RestTemplate restTemplate = new RestTemplate();
         String result = restTemplate.getForObject(url, String.class);
         result = result.split("\"")[3];
         kafkaProducer.sendmessage("Cat_Facts",result);

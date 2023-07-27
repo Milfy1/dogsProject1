@@ -1,6 +1,9 @@
 server:
   port: 8080
 spring:
+  application:
+    name: ownership-records
+
   datasource:
     password: Mohammad10
     url: jdbc:postgresql://localhost:5432/test
@@ -39,6 +42,12 @@ spring:
             reader: false
 
 
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8181/eureka
+    fetch-registry: true
+    register-with-eureka: true
 
 springdoc:
   swagger-ui:
