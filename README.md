@@ -15,11 +15,19 @@ This is a Java-based application that uses Maven, Docker, and Kafka. The applica
 
 ## Setup and Installation
 
+### Using docker build.
+
 1. Clone the repository to your local machine.
 2. Navigate to the project directory.
 3. Build the project using Maven: `mvn clean install`.
 4. Build the Docker image: `docker build -t dog-project .`.
 5. Run the Docker container: `docker run -p 8080:8080 dog-project`.
+
+### Using docker-compose
+
+1. Clone the repository to your local machine.
+2. Navigate to the project directory.
+3. Run the Docker containers using the docker-compose.yml file: `docker-compose up -d`.
 
 ## Usage
 

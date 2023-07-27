@@ -1,0 +1,164 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://soapclasses/gen"
+           targetNamespace="http://soapclasses/gen" elementFormDefault="qualified">
+
+    <!--     get air tags request and response-->
+
+    <!--    <xs:element name="getAirTagRequest">-->
+    <!--        <xs:complexType>-->
+    <!--            <xs:sequence>-->
+<!--    &lt;!&ndash;                <xs:element name="" type="xs:string"/>&ndash;&gt; I think this shoulde be deleted-->
+    <!--            </xs:sequence>-->
+    <!--        </xs:complexType>-->
+    <!--    </xs:element>-->
+
+    <!--    <xs:element name="getAirTagResponse">-->
+    <!--        <xs:complexType>-->
+    <!--            <xs:sequence>-->
+    <!--                <xs:element name="airTag" type="tns:airTag" maxOccurs="unbounded" minOccurs="0"/>-->
+    <!--            </xs:sequence>-->
+    <!--        </xs:complexType>-->
+    <!--    </xs:element>-->
+
+    <!--     add air tags request and response-->
+    <xs:element name="addAirTagRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="airTag" type="tns:airTags"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="addAirTagResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="airTag" type="tns:airTags"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+
+
+    <xs:element name="deleteAirTagRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="airTags">
+        <xs:sequence>
+            <xs:element name="brand" type="xs:string"/>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="color" type="xs:string"/>
+
+        </xs:sequence>
+    </xs:complexType>
+
+    <!--    dog schema-->
+    <xs:element name="getDogRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getDogResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="dog" type="tns:dogs" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="addDogRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="dog" type="tns:dogs"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="addDogResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="dog" type="tns:dogs" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="deleteDogRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+    <xs:complexType name="dogs">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="breed" type="xs:string"/>
+            <xs:element name="origin" type="xs:string"/>
+            <xs:element name="fk_owner_id" type="xs:long"/>
+            <xs:element name="airTag" type="tns:airTags"/>
+
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <!--    owner schema -->
+    <xs:element name="getOwnerRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getOwnerResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="owner" type="tns:owners" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="addOwnerRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="owner" type="tns:owners"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="addOwnerResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="owner" type="tns:owners" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="deleteOwnerRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="owners">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="age" type="xs:int"/>
+            <xs:element name="dogs" type="tns:dogs"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>
