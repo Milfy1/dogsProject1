@@ -12,7 +12,7 @@ import lombok.*;
 public class AirTag {
     @Id
     @SequenceGenerator(name = "air_seq", sequenceName = "air_seq", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE , generator = "air")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE , generator = "air_seq")
     @Column(name = "id")
     private Long id;
     private String brand;

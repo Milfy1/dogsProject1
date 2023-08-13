@@ -11,17 +11,14 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class CatFactKafkaConsumer {
-//    private  final DeSerializer<String> deSerializer;
 
-    public CatFactKafkaConsumer(DeSerializer<String> deSerializer) {
-//        this.deSerializer = deSerializer;
+    public CatFactKafkaConsumer() {
     }
 
-
-    @KafkaListener(topics = {"Cat_Facts"}, groupId = "1")
-    public void receiveMessage(@Payload ConsumerRecord<String, CatFactRecord> message, @Header(KafkaHeaders.RECEIVED_TOPIC) String topic) {
-        // Process the received Avro message
-
-        System.out.println("Received message: " +"topic: "+topic+ "/"+ message.value());
-    }
+//
+//    @KafkaListener(topics = {"Cat_Facts"}, groupId = "1")
+//    public void receiveMessage(@Payload ConsumerRecord<String, CatFactRecord> message, @Header(KafkaHeaders.RECEIVED_TOPIC) String topic) {
+//
+//        System.out.println("Received message: " +"topic: "+topic+ "/"+ message.value());
+//    }
 }

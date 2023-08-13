@@ -37,8 +37,8 @@ public class AirTagImpl implements AirTagService {
     public AirTagDTO createAirTag(AirTagDTO airTagDTO) {
         AirTag airTag = converter.convert(airTagDTO, AirTag.class);
         airTagRepo.save(airTag);
-        AirTagRecord a = converter.convert(airTagDTO, AirTagRecord.class);
-        kafkaProducer.sendmessage("AirTag", a);
+        AirTagRecord a = converter.convert(airTag, AirTagRecord.class);
+        kafkaProducer.sendmessage("topic_2", a);
         return airTagDTO;
     }
 

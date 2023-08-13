@@ -1,5 +1,47 @@
+#server:
+#  port: 8081
+#spring:
+#  application:
+#    name: ownership-records
+#
+#  datasource:
+#    password: Mohammad10
+#    url: jdbc:postgresql://localhost:5432/test
+#    username: postgres
+#  jpa:
+#    hibernate:
+#      ddl-auto: update
+#    properties:
+#      hibernate:
+#        dialect: org.hibernate.dialect.PostgreSQLDialect
+#        format_sql: true
+#    show-sql: false
+#  kafka:
+#    properties:
+#      security.protocol: SASL_SSL
+#      sasl.mechanism: PLAIN
+#
+#      bootstrap.servers: pkc-619z3.us-east1.gcp.confluent.cloud:9092
+#      sasl.jaas.config: org.apache.kafka.common.security.plain.PlainLoginModule required username=I2EMGPHJ4OZFLERG password=I7/u4fYWVJkZg7oe5MfNfpzfsiE5Cp1U3rvIetQ16l64vfOuMtGUz1iX/XJEDi8D;
+#
+#      schema.registry.url: https://psrc-l622j.us-east-2.aws.confluent.cloud
+#      schema.registry.basic.auth.user.info: 53VFSMZU6OTFTBPU:u0HwXQ4RZxFLb7FeTAPceFe/jieDQHuCxJtVFjKfPO9F5xFGrCHb1lpJJo4e8284
+#      basic.auth.credentials.source: USER_INFO
+#
+#    producer:
+#      value-serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
+#      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+#    consumer:
+#      value-deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
+#      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#      auto-offset-reset: latest
+#      properties:
+#        specific:
+#          avro:
+#            reader: false
 server:
-  port: 8081
+  port: 8080
+
 spring:
   application:
     name: ownership-records
@@ -10,7 +52,7 @@ spring:
     username: postgres
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create-drop
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
@@ -22,18 +64,18 @@ spring:
       security.protocol: SASL_SSL
       sasl.mechanism: PLAIN
 
-      bootstrap.servers: pkc-75m1o.europe-west3.gcp.confluent.cloud:9092
-      sasl.jaas.config: org.apache.kafka.common.security.plain.PlainLoginModule   required username='IGFY3MJZOZJU43VK'   password='k/Dtg9O/U+UcXx9ua21ElGlNNJJEK7TTEqiKTsqfPXehn7wfWKcAhsyKMgVuyvJO';
+      bootstrap.servers: pkc-ymrq7.us-east-2.aws.confluent.cloud:9092
+      sasl.jaas.config: org.apache.kafka.common.security.plain.PlainLoginModule required username='3PVGMVFTWWBQIBWT' password='Lwi8RQ7Eaztyi6t5e3rjQnH1Gfbj7vLF7SruiyPC2godhEwLL+7Nt6zHGv/RZ1Nd';
 
-      schema.registry.url: https://psrc-v9krz.eu-central-1.aws.confluent.cloud
-      schema.registry.basic.auth.user.info: SRBQUVEEU6AMEOZ3:xHnrZpYPvcGnBMoZTlOWXFS7VzRsCfK6jZpYJ/ZRFNdQSULWz0WxOfnpR6bKLZIg
+      schema.registry.url: https://psrc-ko92v.us-east-2.aws.confluent.cloud
+      schema.registry.basic.auth.user.info: FBBC5IA7UFFISMFO:j4WJmLKigJ/ELkjcx+RqCH/yOJbsWAccaJxCGFZ9ZHiBLgDimvYuoow/O3DrvK/s
       basic.auth.credentials.source: USER_INFO
 
     producer:
-      value-serializer:  io.confluent.kafka.serializers.KafkaAvroSerializer
+      value-serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
     consumer:
-      value-deserializer:  io.confluent.kafka.serializers.KafkaAvroDeserializer
+      value-deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       auto-offset-reset: latest
       properties:
@@ -41,11 +83,10 @@ spring:
           avro:
             reader: false
 
-
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8181/eureka
+      defaultZone: http://localhost:8761/eureka
     fetch-registry: true
     register-with-eureka: true
 
